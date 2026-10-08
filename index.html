@@ -1466,6 +1466,31 @@ async function fastSaveAttendance(t0){
 }
 function closeCamera(){fastStopCamera();closeModal('cameraModal')}
 function handleVerify(){showToast('Verifikasi otomatis setelah wajah terdeteksi.');}
+function loadFastBootstrap(){
+  if(!currentUser||!currentUser.employee)return;
+  var nik=currentUser.employee.nik, role=currentUser.role;
+  fastCall('getFastBootstrap',[nik,role],20000).then(function(x){
+    var b=x.result||{}, p=b.profile||currentUser.employee;
+    currentUser.employee=p;
+    currentUser.role=p.role||role;
+    try{localStorage.setItem('absensiUser',JSON.stringify(currentUser))}catch(e){}
+    var st=b.status||{};
+    currentStatus=st;
+    var ci=document.getElementById('clockInTime'),co=document.getElementById('clockOutTime'),ib=document.getElementById('clockInBtn'),ob=document.getElementById('clockOutBtn');
+    if(ci)ci.textContent=st.masuk?st.jamMasuk:'--:--';
+    if(co)co.textContent=st.pulang?st.jamPulang:'--:--';
+    if(ib)ib.disabled=!!st.masuk;
+    if(ob)ob.disabled=!st.masuk||!!st.pulang;
+    var showApproval=(currentUser.role==='HR'||currentUser.role==='ADMIN'||b.hasSubordinates===true);
+    var mp=document.getElementById('menuApproval');if(mp)mp.classList.toggle('hidden',!showApproval);
+    var ab=document.getElementById('approvalBadge');if(ab){var n=Number(b.pendingCount||0);ab.textContent=n;ab.style.display=n?'inline-block':'none';}
+    var fb=document.getElementById('faceSelfBtn');if(fb)fb.classList.toggle('hidden',!(b.face&&b.face.canRegister));
+    fastOfficeLocation=b.office||null;
+  }).catch(function(e){
+    console.warn('Fast bootstrap gagal, fallback ke request terpisah:',e);
+    loadMyAccessContext();loadStatusHariIni();loadApprovalCount();fastLoadOffice();
+  });
+}
 function enterMainScreen(){
   showScreen('main');
   var emp=currentUser.employee||{};
@@ -1474,7 +1499,8 @@ function enterMainScreen(){
   var isAdmin=currentUser.role==='HR'||currentUser.role==='ADMIN';
   var ma=document.getElementById('menuAdmin');if(ma)ma.classList.toggle('hidden',!isAdmin);
   var mp=document.getElementById('menuApproval');if(mp)mp.classList.add('hidden');
-  loadMyAccessContext();loadStatusHariIni();loadApprovalCount();preloadEngine();fastLoadOffice();
+  loadFastBootstrap();
+  preloadEngine();
 }
 /* ================= FAST BENCHMARK ================= */
 async function fastBenchJob(name,fn){var vals=[],errors=[];for(var i=0;i<FAST_CFG.repeat;i++){var t=fastNow();try{await fn();vals.push(Math.round(fastNow()-t))}catch(e){vals.push(Math.round(fastNow()-t));errors.push(e.message)}}return{name:name,min:Math.min.apply(Math,vals),median:fastMedian(vals),max:Math.max.apply(Math,vals),errors:errors}}
