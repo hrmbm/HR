@@ -583,8 +583,7 @@ function enterMainScreen(){
   var isAdmin=(currentUser.role==='HR'||currentUser.role==='ADMIN');
   document.getElementById('menuAdmin').classList.toggle('hidden',!isAdmin);
   document.getElementById('menuApproval').classList.add('hidden');
-  loadMyAccessContext();
-  loadStatusHariIni();loadApprovalCount();
+  loadFastBootstrap();
   preloadEngine();
 }
 function loadMyAccessContext(){
@@ -1353,7 +1352,7 @@ var FAST_CFG={
   gps:{enableHighAccuracy:true,timeout:8000,maximumAge:30000},
   camera:{width:480,height:360},
   face:{inputSize:320,scoreThreshold:.45,maxFrames:30},
-  photoQuality:.55
+  photoQuality:.55,photoMaxWidth:640
 };
 var fastFaceReady=false,fastOfficeLocation=null,fastBench=[];
 function fastNow(){return performance.now()}
@@ -1414,7 +1413,7 @@ async function fastDetectDescriptor(){
 }
 function fastCapturePhoto(){
   var v=document.getElementById('cameraVideo'),c=document.createElement('canvas');
-  var w=Math.min(640,v.videoWidth||480),h=Math.round(w*(v.videoHeight||360)/(v.videoWidth||480));c.width=w;c.height=h;
+  var w=Math.min(FAST_CFG.photoMaxWidth||640,v.videoWidth||480),h=Math.round(w*(v.videoHeight||360)/(v.videoWidth||480));c.width=w;c.height=h;
   c.getContext('2d').drawImage(v,0,0,w,h);return c.toDataURL('image/jpeg',FAST_CFG.photoQuality);
 }
 function fastDistance(lat1,lon1,lat2,lon2){var R=6371000,toRad=Math.PI/180,dLat=(lat2-lat1)*toRad,dLon=(lon2-lon1)*toRad,a=Math.sin(dLat/2)**2+Math.cos(lat1*toRad)*Math.cos(lat2*toRad)*Math.sin(dLon/2)**2;return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a))}
@@ -1483,9 +1482,11 @@ function loadFastBootstrap(){
     if(ob)ob.disabled=!st.masuk||!!st.pulang;
     var showApproval=(currentUser.role==='HR'||currentUser.role==='ADMIN'||b.hasSubordinates===true);
     var mp=document.getElementById('menuApproval');if(mp)mp.classList.toggle('hidden',!showApproval);
-    var ab=document.getElementById('approvalBadge');if(ab){var n=Number(b.pendingCount||0);ab.textContent=n;ab.style.display=n?'inline-block':'none';}
-    var fb=document.getElementById('faceSelfBtn');if(fb)fb.classList.toggle('hidden',!(b.face&&b.face.canRegister));
     fastOfficeLocation=b.office||null;
+    loadMyAccessContext();
+    loadApprovalCount();
+    var fb=document.getElementById('faceSelfBtn');if(fb)fb.classList.add('hidden');
+    callServer('getFaceRegistrationStatus',[nik],function(st){if(fb)fb.classList.toggle('hidden',!st.canRegister);},function(){});
   }).catch(function(e){
     console.warn('Fast bootstrap gagal, fallback ke request terpisah:',e);
     loadMyAccessContext();loadStatusHariIni();loadApprovalCount();fastLoadOffice();
