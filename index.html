@@ -319,7 +319,7 @@ async function rpc(fn,params,timeoutMs){
 var gen=SESSION_GEN;
 var ms=timeoutMs||RPC_TIMEOUT_MS;
 try{
-var c=await getSb();
+var c=await withTimeout(getSb(),ms,fn+' (inisialisasi)');
 var r=await withTimeout(c.rpc(fn,params),ms,fn);
 if(stale(gen))throw new Error('STALE');
 if(r.error){var m=r.error.message||'Server error.';
