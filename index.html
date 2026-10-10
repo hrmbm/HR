@@ -21,12 +21,14 @@ input,select,textarea{font-family:inherit;font-size:15px}
 .scr.on{display:block;animation:fade .22s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .wrap{max-width:520px;margin:0 auto;padding:0 16px}
+/* ---------- top bars ---------- */
 .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg)}
 .topbar.red{background:linear-gradient(135deg,#e03131,#c2255c);color:#fff;border-radius:0 0 18px 18px;padding-bottom:18px}
 .topbar h1{font-size:18px;font-weight:700;flex:1}
 .topbar .back{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:20px}
 .topbar.red .back{color:#fff}
 .step-sub{font-size:13px;opacity:.9;text-align:center;margin-top:2px}
+/* ---------- login ---------- */
 #s-login{display:none;min-height:100vh;background:linear-gradient(160deg,#e03131 0%,#c2255c 55%,#862e9c 100%);align-items:center;justify-content:center;padding:24px}
 #s-login.on{display:flex}
 .login-card{background:#fff;border-radius:20px;padding:28px 24px;width:100%;max-width:380px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
@@ -45,6 +47,7 @@ input,select,textarea{font-family:inherit;font-size:15px}
 .btn-ghost{background:#fff;border:1.5px solid #dee2e6;color:#495057}
 .btn:disabled{opacity:.55}
 .err{color:var(--red);font-size:13px;text-align:center;margin-top:10px;min-height:16px}
+/* ---------- home ---------- */
 .greet{display:flex;align-items:center;gap:12px;padding:18px 4px 6px}
 .greet .ava{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#748ffc,#3b5bdb);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;overflow:hidden;flex-shrink:0}
 .greet .ava img{width:100%;height:100%;object-fit:cover}
@@ -76,6 +79,7 @@ input,select,textarea{font-family:inherit;font-size:15px}
 .team-ava .cir{width:46px;height:46px;border-radius:50%;background:#e9ecef;color:#495057;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;margin:0 auto}
 .team-ava span{display:block;font-size:10.5px;color:var(--gray);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .card{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:16px;margin-top:14px}
+/* ---------- attendance flow ---------- */
 .att-shift{background:#fff;border-radius:14px;padding:14px 16px;margin:12px 16px;box-shadow:var(--shadow)}
 .att-shift b{font-size:18px}
 .att-shift div{color:var(--gray);font-size:13px;margin-top:3px;display:flex;align-items:center;gap:6px}
@@ -94,6 +98,7 @@ input,select,textarea{font-family:inherit;font-size:15px}
 .success-box .big{font-size:64px;margin-bottom:12px}
 .success-box h2{margin-bottom:6px}
 .success-box p{color:var(--gray);font-size:14px}
+/* ---------- lists ---------- */
 .search{margin:4px 16px 10px;position:relative}
 .search input{width:100%;padding:13px 16px 13px 44px;border:1.5px solid #e9ecef;border-radius:14px;background:#fff;outline:none}
 .search .ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray);font-size:17px}
@@ -124,6 +129,7 @@ input,select,textarea{font-family:inherit;font-size:15px}
 .cat-item .ci{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px}
 .cat-item b{flex:1;font-size:15px}
 .cat-item .n{color:var(--gray)}
+/* ---------- detail ---------- */
 .det-hero{position:relative;background:#e9ecef;height:210px}
 .det-hero img{width:100%;height:100%;object-fit:cover}
 .det-hero .map-half{position:absolute;left:0;top:0;bottom:0;width:52%}
@@ -147,11 +153,13 @@ input,select,textarea{font-family:inherit;font-size:15px}
 .dot.base{background:#3b5bdb}
 .dot.no{background:#c92a2a}
 .det-actions{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+/* ---------- bottom nav ---------- */
 #tabbar{position:fixed;left:0;right:0;bottom:0;z-index:100;background:#fff;border-top:1px solid var(--line);display:flex;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
 #tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0;color:#9aa3ad;font-size:10.5px;font-weight:600;position:relative}
 #tabbar button.on{color:var(--blue)}
 #tabbar .tic{font-size:21px;line-height:1}
 #tabbar .tbadge{position:absolute;top:-2px;left:calc(50% + 6px);min-width:18px;height:18px;border-radius:9px;background:#e03131;color:#fff;font-size:10.5px;font-weight:700;line-height:18px;text-align:center;padding:0 4px}
+/* ---------- sheets ---------- */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:none;align-items:flex-end;justify-content:center}
 .overlay.on{display:flex}
 .sheet{background:#fff;width:100%;max-width:520px;border-radius:20px 20px 0 0;padding:10px 20px calc(24px + env(safe-area-inset-bottom));max-height:86vh;overflow-y:auto;animation:up .25s ease}
@@ -183,7 +191,11 @@ input,select,textarea{font-family:inherit;font-size:15px}
 .seg{display:flex;background:#eef0f2;border-radius:12px;padding:4px;margin:0 16px 14px}
 .seg button{flex:1;padding:9px;border-radius:9px;font-size:14px;font-weight:600;color:var(--gray)}
 .seg button.on{background:#fff;color:var(--txt);box-shadow:var(--shadow)}
-/* Tombol Kirim melayang lebih atas */
+/* =====================================================
+   TAMBAHAN: tombol Kirim melayang lebih atas
+   (permintaan user, meniru Talenta/Mekari)
+   Tidak mengubah CSS di atas.
+   ===================================================== */
 #attStep2{padding-bottom:20vh}
 #attStep2 .fab-next{position:fixed;left:0;right:0;bottom:12vh;z-index:95;margin:0;padding:0 16px;max-width:520px}
 #attStep2 .fab-next .btn{box-shadow:0 12px 28px rgba(0,0,0,.22)}
@@ -411,49 +423,38 @@ input,select,textarea{font-family:inherit;font-size:15px}
 
 <!-- SUPABASE JS -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<!-- FACE API -->
-<script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/dist/face-api.js"></script>
 
 <script>
 /* ================================================================
-KONFIGURASI SUPABASE
+KONFIGURASI - SUPABASE (menggantikan Google Apps Script)
 ================================================================ */
 var SUPABASE_URL = 'https://viynlhmupknbsvmysvdr.supabase.co';
 var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpeW5saG11cGtuYnN2bXlzdmRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0OTgzMzQsImV4cCI6MjEwNzA3NDMzNH0.gCptzMDirS5DGPDs51nVAT1UPlzgwD0pwMc-c-DwaF8';
 var APP_VERSION = '5.3-TALENTA-FAST-SUPABASE';
 var MODEL_URL = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/model/';
+var FACE_API_URL = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/dist/face-api.js';
+var IS_STATIC = true;
 var sb = null;
 
 function getSb(){
-  if(SUPABASE_ANON_KEY.indexOf('PASTE_')===0){
+  if(SUPABASE_ANON_KEY.indexOf('PASTE_') === 0){
     throw new Error('Ganti SUPABASE_ANON_KEY di konfigurasi.');
   }
+  if(!window.supabase) throw new Error('Supabase JS belum termuat.');
   if(!sb) sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   return sb;
 }
 
 /* ================================================================
-STATE
+TOKEN SESSION (login persisten)
 ================================================================ */
-var S={user:null,office:null,status:null,sisaCT:null,face:{registered:false,canRegister:false},pendingTotal:0,approver:false};
-var GPS={pos:null,at:0,watchId:null};
-var CAM={stream:null,run:false,desc:null,descAt:0};
-var NETS={ready:false,promise:null};
-var ATT={type:'MASUK',submitting:false};
-var LOGM={y:new Date().getFullYear(),m:new Date().getMonth()+1};
-var CACHE={masterCuti:null,masterCutiAt:0};
-var DATA={cutiList:[],empList:[],appr:null,myReq:null};
-var FACESELF={stream:null,run:false,desc:null};
-
-/* ================================================================
-TOKEN SESSION
-================================================================ */
-function getToken(){ return localStorage.getItem('tk_token')||''; }
-function setToken(t){ if(t) localStorage.setItem('tk_token',t); else localStorage.removeItem('tk_token'); }
+function getToken(){ return localStorage.getItem('tk_token') || ''; }
+function setToken(t){ if(t) localStorage.setItem('tk_token', t); else localStorage.removeItem('tk_token'); }
+function clearToken(){ localStorage.removeItem('tk_token'); }
 function clearAllSession(){
-  setToken('');
-  try{localStorage.removeItem('tk_sess')}catch(e){}
-  try{localStorage.removeItem('tk_notif')}catch(e){}
+  clearToken();
+  try{ localStorage.removeItem('tk_sess'); }catch(e){}
+  try{ localStorage.removeItem('tk_notif'); }catch(e){}
 }
 
 /* ================================================================
@@ -482,56 +483,17 @@ async function rpc(fn, params){
 }
 
 /* ================================================================
-API LAYER - MAPPING KE SUPABASE RPC
+STATE
 ================================================================ */
-async function api(fn, args, timeout, retried){
-  args = args || [];
-  fn = String(fn);
-
-  if(fn === 'login'){
-    var loginRes = await rpc('login_pin', {
-      p_employee_id: String(args[0]||'').trim(),
-      p_pin: String(args[1]||'').trim(),
-      p_device_id: 'web',
-      p_user_agent: navigator.userAgent
-    });
-    if(loginRes && loginRes.success && loginRes.token) setToken(loginRes.token);
-    return loginRes;
-  }
-  if(fn === 'getAppVersion') return APP_VERSION;
-  if(fn === 'pingServer') return rpc('ping_server', {});
-  if(fn === 'getMyProfile') return rpc('get_my_profile', {p_token:getToken()});
-  if(fn === 'getFastBootstrap') return rpc('bootstrap', {p_token:getToken()});
-  if(fn === 'getStatusHariIni') return rpc('get_status_hari_ini', {p_token:getToken()});
-  if(fn === 'getRiwayatKehadiran') return (await rpc('get_riwayat_kehadiran',{p_token:getToken(),p_year:args[1],p_month:args[2]}))||[];
-  if(fn === 'getMasterCuti') return (await rpc('get_master_cuti',{p_token:getToken()}))||[];
-  if(fn === 'getSisaCuti') return rpc('get_sisa_cuti',{p_token:getToken(),p_kode:args[1]||'CT'});
-  if(fn === 'getMyPendingRequests') return (await rpc('get_my_pending_requests',{p_token:getToken()}))||{absensi:[],cuti:[]};
-  if(fn === 'changeMyPassword') return rpc('change_my_password',{p_token:getToken(),p_old_pin:args[1],p_new_pin:args[2]});
-  if(fn === 'simpanAbsensi'){
-    var p = args[0]||{};
-    return rpc('submit_attendance',{
-      p_token:getToken(),
-      p_tipe:p.tipe,
-      p_lat:p.latitude,
-      p_lon:p.longitude,
-      p_acc:p.accuracy,
-      p_descriptor:p.faceDescriptor,
-      p_catatan:p.catatan||'',
-      p_address:p.address||''
-    });
-  }
-  if(fn === 'uploadAbsensiFoto') return {success:true,message:'Foto async (tahap berikutnya)'};
-  if(fn === 'getKaryawanSummary') return {ok:true,list:[],count:0};
-  if(fn === 'getPendingApprovalsFull') return {absensi:[],cuti:[],total:0};
-  if(fn === 'getRiwayatCuti') return [];
-  if(fn === 'submitCuti') throw new Error('Modul cuti Supabase belum aktif di tahap ini.');
-  if(fn === 'processApproval') throw new Error('Approval belum aktif di tahap ini.');
-  if(fn === 'processCutiApproval') throw new Error('Approval cuti belum aktif di tahap ini.');
-  if(fn === 'saveMyFaceDescriptor') throw new Error('Face registration belum aktif di tahap ini.');
-  if(fn === 'getDashboardAdmin') throw new Error('Dashboard belum aktif di tahap ini.');
-  throw new Error('API belum dipetakan: '+fn);
-}
+var S={user:null,office:null,status:null,sisaCT:null,face:{registered:false,canRegister:false},pendingTotal:0,approver:false};
+var GPS={pos:null,at:0,watchId:null};
+var CAM={stream:null,run:false,desc:null,descAt:0};
+var NETS={ready:false,promise:null};
+var ATT={type:'MASUK',submitting:false};
+var LOGM={y:new Date().getFullYear(),m:new Date().getMonth()+1};
+var CACHE={masterCuti:null,masterCutiAt:0,lokasiAt:0};
+var DATA={cutiList:[],empList:[],appr:null,myReq:null};
+var FACESELF={stream:null,run:false,desc:null};
 
 /* ================================================================
 UTIL
@@ -546,10 +508,85 @@ function tglID(iso){var p=iso.split('-');var d=new Date(+p[0],+p[1]-1,+p[2]);ret
 function driveThumb(url){var m=String(url||'').match(/id=([^&]+)/);return m?('https://drive.google.com/thumbnail?id='+m[1]+'&sz=w800'):url}
 function osmEmbed(lat,lon){var d=0.006;return 'https://www.openstreetmap.org/export/embed.html?bbox='+(lon-d)+'%2C'+(lat-d)+'%2C'+(lon+d)+'%2C'+(lat+d)+'&layer=mapnik&marker='+lat+'%2C'+lon}
 function statusPill(st){
-  if(st==='PENDING_ATASAN'||st==='PENDING_HR')return'<span class="pill warn">Menunggu persetujuan</span>';
-  if(st==='DISETUJUI'||(st&&st.indexOf('DISETUJUI')>=0))return'<span class="pill ok">Disetujui</span>';
-  if(st&&st.indexOf('DITOLAK')>=0)return'<span class="pill no">Ditolak</span>';
-  return'<span class="pill ok">Hadir</span>';
+if(st==='PENDING_ATASAN'||st==='PENDING_HR')return'<span class="pill warn">Menunggu persetujuan</span>';
+if(st==='DISETUJUI'||(st&&st.indexOf('DISETUJUI')>=0))return'<span class="pill ok">Disetujui</span>';
+if(st&&st.indexOf('DITOLAK')>=0)return'<span class="pill no">Ditolak</span>';
+return'<span class="pill ok">Hadir</span>';
+}
+
+/* ================================================================
+API LAYER - SUPABASE RPC
+(menggantikan Google Apps Script fetch)
+================================================================ */
+async function api(fn, args, timeout, retried){
+  args = args || [];
+  fn = String(fn);
+
+  if(fn === 'login'){
+    var loginRes = await rpc('login_pin', {
+      p_employee_id: String(args[0] || '').trim(),
+      p_pin: String(args[1] || '').trim(),
+      p_device_id: 'web',
+      p_user_agent: navigator.userAgent
+    });
+    if(loginRes && loginRes.success && loginRes.token) setToken(loginRes.token);
+    return loginRes;
+  }
+
+  if(fn === 'getAppVersion') return APP_VERSION;
+  if(fn === 'pingServer') return rpc('ping_server', {});
+
+  if(fn === 'getMyProfile') return rpc('get_my_profile', { p_token: getToken() });
+  if(fn === 'getFastBootstrap') return rpc('bootstrap', { p_token: getToken() });
+  if(fn === 'getStatusHariIni') return rpc('get_status_hari_ini', { p_token: getToken() });
+
+  if(fn === 'getRiwayatKehadiran'){
+    var riwayat = await rpc('get_riwayat_kehadiran', { p_token: getToken(), p_year: args[1], p_month: args[2] });
+    return riwayat || [];
+  }
+
+  if(fn === 'getMasterCuti'){
+    var master = await rpc('get_master_cuti', { p_token: getToken() });
+    return master || [];
+  }
+
+  if(fn === 'getSisaCuti') return rpc('get_sisa_cuti', { p_token: getToken(), p_kode: args[1] || 'CT' });
+
+  if(fn === 'getMyPendingRequests'){
+    var pending = await rpc('get_my_pending_requests', { p_token: getToken() });
+    return pending || { absensi: [], cuti: [] };
+  }
+
+  if(fn === 'changeMyPassword'){
+    return rpc('change_my_password', { p_token: getToken(), p_old_pin: args[1], p_new_pin: args[2] });
+  }
+
+  if(fn === 'simpanAbsensi'){
+    var p = args[0] || {};
+    return rpc('submit_attendance', {
+      p_token: getToken(),
+      p_tipe: p.tipe,
+      p_lat: p.latitude,
+      p_lon: p.longitude,
+      p_acc: p.accuracy,
+      p_descriptor: p.faceDescriptor,
+      p_catatan: p.catatan || '',
+      p_address: p.address || ''
+    });
+  }
+
+  /* ============ STUB - TAHAP BERIKUTNYA ============ */
+  if(fn === 'uploadAbsensiFoto') return { success: true, message: 'Foto async (tahap berikutnya).' };
+  if(fn === 'getKaryawanSummary') return { ok: true, list: [], count: 0 };
+  if(fn === 'getPendingApprovalsFull') return { absensi: [], cuti: [], total: 0 };
+  if(fn === 'getRiwayatCuti') return [];
+  if(fn === 'submitCuti') throw new Error('Modul cuti Supabase belum aktif di tahap ini.');
+  if(fn === 'processApproval') throw new Error('Approval presensi belum aktif di tahap ini.');
+  if(fn === 'processCutiApproval') throw new Error('Approval cuti belum aktif di tahap ini.');
+  if(fn === 'saveMyFaceDescriptor') throw new Error('Face registration belum aktif di tahap ini.');
+  if(fn === 'getDashboardAdmin') throw new Error('Dashboard admin belum aktif di tahap ini.');
+
+  throw new Error('API belum dipetakan: ' + fn);
 }
 
 /* ================================================================
@@ -564,26 +601,26 @@ NAVIGASI
 ================================================================ */
 var TABPAGES={ 's-home':1,'s-emp':1,'s-inbox':1,'s-akun':1 };
 function go(id){
-  var scr=document.querySelectorAll('.scr');
-  for(var i=0;i<scr.length;i++)scr[i].classList.remove('on');
-  $(id).classList.add('on');
-  window.scrollTo(0,0);
-  var tb=$('tabbar');
-  if(TABPAGES[id]){
-    tb.style.display='flex';
-    var bt=tb.querySelectorAll('button');
-    for(var j=0;j<bt.length;j++)bt[j].classList.toggle('on',bt[j].getAttribute('data-t')===id);
-    if(id==='s-home')renderHome();
-    if(id==='s-akun')renderAkun();
-  }else{
-    tb.style.display='none';
-  }
+var scr=document.querySelectorAll('.scr');
+for(var i=0;i<scr.length;i++)scr[i].classList.remove('on');
+$(id).classList.add('on');
+window.scrollTo(0,0);
+var tb=$('tabbar');
+if(TABPAGES[id]){
+tb.style.display='flex';
+var bt=tb.querySelectorAll('button');
+for(var j=0;j<bt.length;j++)bt[j].classList.toggle('on',bt[j].getAttribute('data-t')===id);
+if(id==='s-home')renderHome();
+if(id==='s-akun')renderAkun();
+}else{
+tb.style.display='none';
+}
 }
 var _backTo='s-inbox';
 function backTarget(){return _backTo}
 function openSheet(id){
-  ['shAjukan','shProfile','shPin','shFace'].forEach(function(x){$(x).style.display='none'});
-  $(id).style.display='block';$('ov').classList.add('on');
+['shAjukan','shProfile','shPin','shFace'].forEach(function(x){$(x).style.display='none'});
+$(id).style.display='block';$('ov').classList.add('on');
 }
 function closeSheet(){$('ov').classList.remove('on');stopFaceSelf()}
 
@@ -591,716 +628,725 @@ function closeSheet(){$('ov').classList.remove('on');stopFaceSelf()}
 LOGIN / LOGOUT
 ================================================================ */
 function doLogin(){
-  var nik=$('lgNik').value.trim(),pin=$('lgPin').value.trim();
-  $('lgErr').textContent='';
-  if(!nik||!pin){$('lgErr').textContent='NIK dan PIN wajib diisi.';return}
-  var b=$('lgBtn');b.disabled=true;b.innerHTML='<span class="spin"></span> Memproses...';
-  api('login',[nik,pin],30000).then(function(res){
-    b.disabled=false;b.textContent='Masuk';
-    if(!res.success){$('lgErr').textContent=res.message||'Login gagal.';return}
-    S.user={nik:res.employee.nik,nama:res.employee.nama,role:res.role,employee:res.employee};
-    saveSession();
-    enterApp();
-  }).catch(function(e){b.disabled=false;b.textContent='Masuk';$('lgErr').textContent=e.message});
+var nik=$('lgNik').value.trim(),pin=$('lgPin').value.trim();
+$('lgErr').textContent='';
+if(!nik||!pin){$('lgErr').textContent='NIK dan PIN wajib diisi.';return}
+var b=$('lgBtn');b.disabled=true;b.innerHTML='<span class="spin"></span> Memproses...';
+api('login',[nik,pin],30000).then(function(res){
+b.disabled=false;b.textContent='Masuk';
+if(!res.success){$('lgErr').textContent=res.message||'Login gagal.';return}
+S.user={nik:res.employee.nik,nama:res.employee.nama,role:res.role,employee:res.employee};
+saveSession();
+enterApp();
+}).catch(function(e){b.disabled=false;b.textContent='Masuk';$('lgErr').textContent=e.message});
 }
 function doLogout(){
-  if(!confirm('Keluar dari akun?'))return;
-  clearAllSession();S.user=null;
-  go('s-login');$('tabbar').style.display='none';
+if(!confirm('Keluar dari akun?'))return;
+clearAllSession();S.user=null;
+go('s-login');$('tabbar').style.display='none';
 }
 function enterApp(){
-  go('s-home');
-  $('tabEmp').style.display=(S.user.role==='HR'||S.user.role==='ADMIN')?'flex':'none';
-  $('verTxt').textContent='Versi '+APP_VERSION;
-  renderHome();
-  api('pingServer',[],15000).catch(function(){});
-  scheduleNets();
-  gpsWarm();
-  loadBootstrap();
+go('s-home');
+$('tabEmp').style.display=(S.user.role==='HR'||S.user.role==='ADMIN')?'flex':'none';
+$('verTxt').textContent='Versi '+APP_VERSION;
+renderHome();
+api('pingServer',[],15000).catch(function(){});
+scheduleNets();
+gpsWarm();
+loadBootstrap();
 }
 function renderHome(){
-  if(!S.user)return;
-  var e=S.user.employee||{};
-  $('homeGreet').textContent=greetByHour()+',';
-  $('homeName').textContent=S.user.nama;
-  $('homeAva').textContent=initials(S.user.nama);
-  var now=new Date();
-  $('shiftHeadTitle').textContent='Jadwal shift untuk '+hariID(now).slice(0,3)+', '+now.getDate()+' '+bulanID(now)+' '+now.getFullYear();
-  renderShiftStatus();
-  renderFaceBanner();
+if(!S.user)return;
+var e=S.user.employee||{};
+$('homeGreet').textContent=greetByHour()+',';
+$('homeName').textContent=S.user.nama;
+$('homeAva').textContent=initials(S.user.nama);
+var now=new Date();
+$('shiftHeadTitle').textContent='Jadwal shift untuk '+hariID(now).slice(0,3)+', '+now.getDate()+' '+bulanID(now)+' '+now.getFullYear();
+renderShiftStatus();
+renderFaceBanner();
 }
 function greetByHour(){var h=new Date().getHours();return h<11?'Selamat pagi':h<15?'Selamat siang':h<19?'Selamat sore':'Selamat malam'}
 function renderShiftStatus(){
-  var st=S.status||{};
-  $('btnCI').disabled=!!st.masuk;
-  $('btnCO').disabled=!st.masuk||!!st.pulang;
-  var n=$('shiftNote');
-  if(st.masuk&&st.pulang){n.textContent='Anda telah berhasil clock out pada pukul '+(st.jamPulang||'').slice(0,5);n.className='shift-note ok'}
-  else if(st.masuk){n.textContent='Anda telah berhasil clock in pada pukul '+(st.jamMasuk||'').slice(0,5);n.className='shift-note ok'}
-  else{n.textContent='Belum ada aktivitas hari ini';n.className='shift-note'}
+var st=S.status||{};
+$('btnCI').disabled=!!st.masuk;
+$('btnCO').disabled=!st.masuk||!!st.pulang;
+var n=$('shiftNote');
+if(st.masuk&&st.pulang){n.textContent='Anda telah berhasil clock out pada pukul '+(st.jamPulang||'').slice(0,5);n.className='shift-note ok'}
+else if(st.masuk){n.textContent='Anda telah berhasil clock in pada pukul '+(st.jamMasuk||'').slice(0,5);n.className='shift-note ok'}
+else{n.textContent='Belum ada aktivitas hari ini';n.className='shift-note'}
 }
 function renderFaceBanner(){
-  var b=$('faceBanner');
-  if(S.face.registered){b.style.display='none';return}
-  b.style.display='block';
-  $('faceBannerTxt').textContent=S.face.canRegister?'Face ID belum terdaftar. Daftar sekarang agar bisa absen.':'Face ID belum terdaftar. Hubungi HR untuk mendapatkan akses registrasi.';
-  $('faceBannerBtn').style.display=S.face.canRegister?'flex':'none';
-  $('akunFaceRow').style.display=S.face.canRegister?'flex':'none';
+var b=$('faceBanner');
+if(S.face.registered){b.style.display='none';return}
+b.style.display='block';
+$('faceBannerTxt').textContent=S.face.canRegister?'Face ID belum terdaftar. Daftar sekarang agar bisa absen.':'Face ID belum terdaftar. Hubungi HR untuk mendapatkan akses registrasi.';
+$('faceBannerBtn').style.display=S.face.canRegister?'flex':'none';
+$('akunFaceRow').style.display=S.face.canRegister?'flex':'none';
 }
 function renderAkun(){
-  if(!S.user)return;
-  var e=S.user.employee||{};
-  $('akunAva').textContent=initials(S.user.nama);
-  $('akunName').textContent=S.user.nama;
-  $('akunPos').textContent=e.position||e.role||'-';
-  $('akunOrg').textContent=(e.organization||'-')+(e.branch?' • '+e.branch:'');
-  renderFaceBanner();
+if(!S.user)return;
+var e=S.user.employee||{};
+$('akunAva').textContent=initials(S.user.nama);
+$('akunName').textContent=S.user.nama;
+$('akunPos').textContent=e.position||e.role||'-';
+$('akunOrg').textContent=(e.organization||'-')+(e.branch?' • '+e.branch:'');
+renderFaceBanner();
 }
 function openProfileSheet(){
-  var e=S.user.employee||{};
-  $('profBody').innerHTML=
-  '<div class="prof-head"><div class="ava">'+initials(S.user.nama)+'</div><div><b>'+esc(S.user.nama)+'</b><br><small style="color:var(--gray)">'+esc(e.position||e.role||'')+'</small></div></div>'+
-  profRow('ID Karyawan',e.nik)+profRow('Role',e.role)+profRow('Organisasi',e.organization||'-')+
-  profRow('Branch',e.branch||'-')+profRow('Level',e.level||'-')+profRow('Status',e.statusKerja||'-')+
-  profRow('Atasan',e.atasanNama||'—')+profRow('Bergabung',e.joinDate||'-');
-  openSheet('shProfile');
+var e=S.user.employee||{};
+$('profBody').innerHTML=
+'<div class="prof-head"><div class="ava">'+initials(S.user.nama)+'</div><div><b>'+esc(S.user.nama)+'</b><br><small style="color:var(--gray)">'+esc(e.position||e.role||'')+'</small></div></div>'+
+profRow('ID Karyawan',e.nik)+profRow('Role',e.role)+profRow('Organisasi',e.organization||'-')+
+profRow('Branch',e.branch||'-')+profRow('Level',e.level||'-')+profRow('Status',e.statusKerja||'-')+
+profRow('Atasan',e.atasanNama||'—')+profRow('Bergabung',e.joinDate||'-');
+openSheet('shProfile');
 }
 function profRow(k,v){return'<div class="prof-row"><span>'+esc(k)+'</span><b>'+esc(v)+'</b></div>'}
 function changePin(){
-  var o=$('pinOld').value.trim(),n=$('pinNew').value.trim(),n2=$('pinNew2').value.trim();
-  $('pinErr').textContent='';
-  if(n!==n2){$('pinErr').textContent='Konfirmasi PIN tidak sama.';return}
-  api('changeMyPassword',[S.user.nik,o,n]).then(function(r){toast(r.message);closeSheet()}).catch(function(e){$('pinErr').textContent=e.message});
+var o=$('pinOld').value.trim(),n=$('pinNew').value.trim(),n2=$('pinNew2').value.trim();
+$('pinErr').textContent='';
+if(n!==n2){$('pinErr').textContent='Konfirmasi PIN tidak sama.';return}
+api('changeMyPassword',[S.user.nik,o,n]).then(function(r){toast(r.message);closeSheet()}).catch(function(e){$('pinErr').textContent=e.message});
 }
 
 /* ================================================================
-BOOTSTRAP
+BOOTSTRAP (1 panggilan = semua)
 ================================================================ */
 function loadBootstrap(){
-  return api('getFastBootstrap',[S.user.nik],30000).then(function(b){
-    S.user.employee=b.profile;S.user.role=b.profile.role||S.user.role;
-    S.office=b.office;S.status=b.status;S.sisaCT=b.sisaCuti;
-    S.face=b.faceStatus||{registered:false,canRegister:false};
-    S.approver=(S.user.role==='HR'||S.user.role==='ADMIN'||b.hasSubordinates===true);
-    S.pendingTotal=b.pendingTotal||0;
-    saveSession();
-    renderHome();
-    updateBadges();
-    loadTeam();
-    loadMyRequests();
-  }).catch(function(e){
-    api('getStatusHariIni',[S.user.nik]).then(function(st){S.status=st;renderHome()}).catch(function(){});
-  });
+return api('getFastBootstrap',[S.user.nik],30000).then(function(b){
+S.user.employee=b.profile;S.user.role=b.profile.role||S.user.role;
+S.office=b.office;S.status=b.status;S.sisaCT=b.sisaCuti;
+S.face=b.faceStatus||{registered:false,canRegister:false};
+S.approver=(S.user.role==='HR'||S.user.role==='ADMIN'||b.hasSubordinates===true);
+S.pendingTotal=b.pendingTotal||0;
+saveSession();
+renderHome();
+updateBadges();
+loadTeam();
+loadMyRequests();
+}).catch(function(e){
+api('getStatusHariIni',[S.user.nik]).then(function(st){S.status=st;renderHome()}).catch(function(){});
+});
 }
 function updateBadges(){
-  var n=S.pendingTotal||0;
-  var b=$('tabBadge');b.textContent=n;b.style.display=n?'block':'none';
-  var b2=$('inboxBadge');b2.textContent=n;b2.style.display=n?'inline-block':'none';
+var n=S.pendingTotal||0;
+var b=$('tabBadge');b.textContent=n;b.style.display=n?'block':'none';
+var b2=$('inboxBadge');b2.textContent=n;b2.style.display=n?'inline-block':'none';
 }
 
 /* ================================================================
-GPS
+GPS - warm + watch
 ================================================================ */
 function gpsWarm(){
-  if(!navigator.geolocation)return;
-  navigator.geolocation.getCurrentPosition(function(p){setGps(p)},function(){},{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
-  if(GPS.watchId==null){
-    GPS.watchId=navigator.geolocation.watchPosition(function(p){setGps(p)},function(){},{enableHighAccuracy:true,maximumAge:10000});
-  }
+if(!navigator.geolocation)return;
+navigator.geolocation.getCurrentPosition(function(p){setGps(p)},function(){},{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
+if(GPS.watchId==null){
+GPS.watchId=navigator.geolocation.watchPosition(function(p){setGps(p)},function(){},{enableHighAccuracy:true,maximumAge:10000});
+}
 }
 function setGps(p){
-  if(!GPS.pos||p.coords.accuracy<GPS.pos.accuracy){GPS.pos={latitude:p.coords.latitude,longitude:p.coords.longitude,accuracy:p.coords.accuracy};GPS.at=Date.now()}
-  if(ATT.type&&$('s-att').classList.contains('on')&&!$('attStep1').style.display){
-    renderGpsUi();
-  }
+if(!GPS.pos||p.coords.accuracy<GPS.pos.accuracy){GPS.pos={latitude:p.coords.latitude,longitude:p.coords.longitude,accuracy:p.coords.accuracy};GPS.at=Date.now()}
+if(ATT.type&&$('s-att').classList.contains('on')&&!$('attStep1').style.display){
+renderGpsUi();
+}
 }
 function refreshGps(){
-  if(!navigator.geolocation){toast('GPS tidak didukung');return}
-  $('gpsInfo').textContent='⏳ Memperbarui lokasi...';
-  navigator.geolocation.getCurrentPosition(function(p){setGps(p);renderGpsUi()},function(e){$('gpsInfo').textContent='❌ '+e.message},{enableHighAccuracy:true,timeout:15000,maximumAge:0});
+if(!navigator.geolocation){toast('GPS tidak didukung');return}
+$('gpsInfo').textContent='⏳ Memperbarui lokasi...';
+navigator.geolocation.getCurrentPosition(function(p){setGps(p);renderGpsUi()},function(e){$('gpsInfo').textContent='❌ '+e.message},{enableHighAccuracy:true,timeout:15000,maximumAge:0});
 }
 function jarakMeter(a,b,c,d){var R=6371000,r=Math.PI/180,dLa=(c-a)*r,dLo=(d-b)*r,x=Math.sin(dLa/2)*Math.sin(dLa/2)+Math.cos(a*r)*Math.cos(c*r)*Math.sin(dLo/2)*Math.sin(dLo/2);return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x))}
 function inOfficeCheck(){
-  var p=GPS.pos,o=S.office;
-  if(!p||!o)return{inOffice:false,reason:!p?'no-gps':'no-office'};
-  var d=jarakMeter(p.latitude,p.longitude,o.latitude,o.longitude);
-  return{inOffice:(d<=o.radius&&p.accuracy<=o.maxAccuracy),distance:d,office:o};
-}
-function renderGpsUi(){
-  var p=GPS.pos;
-  if(!p)return;
-  var chk=inOfficeCheck();
-  $('mapBox').innerHTML='<div class="empty" style="padding-top:110px">📍 GPS siap</div>';
-  var jarak=(typeof chk.distance==='number')?Math.round(chk.distance)+' m':'-';
-  $('gpsInfo').textContent='✅ Akurasi ±'+Math.round(p.accuracy)+' m • Jarak ke kantor: '+jarak;
-  var low=p.accuracy>(S.office?S.office.maxAccuracy:50);
-  $('gpsWarn').style.display=low?'flex':'none';
-  $('btnNext1').disabled=false;
+var p=GPS.pos,o=S.office;
+if(!p||!o)return{inOffice:false,reason:!p?'no-gps':'no-office'};
+var d=jarakMeter(p.latitude,p.longitude,o.latitude,o.longitude);
+return{inOffice:(d<=o.radius&&p.accuracy<=o.maxAccuracy),distance:d,office:o};
 }
 
 /* ================================================================
-FACE AI
+FACE AI - model tiny saja (ringan)
 ================================================================ */
+function loadFaceApiScript(){
+return new Promise(function(res,rej){
+if(typeof faceapi!=='undefined')return res();
+var s=document.createElement('script');s.src=FACE_API_URL;
+s.onload=res;s.onerror=function(){rej(new Error('Gagal memuat face-api.js'))};
+document.head.appendChild(s);
+});
+}
 function scheduleNets(){
-  var run=function(){ensureNets().catch(function(e){console.warn('nets:',e)})};
-  if(window.requestIdleCallback)requestIdleCallback(run,{timeout:5000});else setTimeout(run,1200);
+var run=function(){ensureNets().catch(function(e){console.warn('nets:',e)})};
+if(window.requestIdleCallback)requestIdleCallback(run,{timeout:5000});else setTimeout(run,1200);
 }
 function ensureNets(){
-  if(NETS.ready)return Promise.resolve();
-  if(NETS.promise)return NETS.promise;
-  NETS.promise=(async function(){
-    if(typeof faceapi==='undefined') throw new Error('face-api.js belum termuat');
-    await Promise.all([
-      faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
-      faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
-      faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL)
-    ]);
-    NETS.ready=true;
-  })();
-  return NETS.promise;
+if(NETS.ready)return Promise.resolve();
+if(NETS.promise)return NETS.promise;
+NETS.promise=(async function(){
+await loadFaceApiScript();
+await Promise.all([
+faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL)
+]);
+NETS.ready=true;
+})();
+return NETS.promise;
 }
 
 /* ================================================================
-FLOW ABSEN
+FLOW ABSEN (warm camera + deteksi berjalan terus)
 ================================================================ */
 function nextAttType(){var st=S.status||{};return st.masuk&&!st.pulang?'PULANG':'MASUK'}
 async function startAttendance(type){
-  if(S.submitting)return;
-  if(!S.face.registered){toast('Face ID belum terdaftar. Hubungi HR.');return}
-  var st=S.status||{};
-  if(type==='MASUK'&&st.masuk){toast('Sudah Clock In hari ini.');return}
-  if(type==='PULANG'&&st.pulang){toast('Sudah Clock Out hari ini.');return}
-  if(type==='PULANG'&&!st.masuk){toast('Anda belum Clock In.');return}
-  ATT.type=type;ATT.submitting=false;
-  $('attTitle').textContent=type==='MASUK'?'Clock In':'Clock Out';
-  $('attStep').textContent='Langkah 1 dari 2';
-  var now=new Date();
-  $('attDate').textContent=now.getDate()+' '+bulanID(now)+' '+now.getFullYear();
-  $('attStep1').style.display='block';
-  $('attStep2').style.display='none';
-  $('attDone').style.display='none';
-  $('btnNext1').disabled=true;
-  $('mapBox').innerHTML='<div class="empty" style="padding-top:110px">📍 Mengambil lokasi...</div>';
-  $('gpsInfo').textContent='⏳ Menunggu GPS...';
-  $('gpsWarn').style.display='none';
-  go('s-att');
-  refreshGps();
-  camStart().catch(function(e){$('camStatus').textContent='❌ Kamera: '+e.message});
-  ensureNets().catch(function(e){$('camStatus').textContent='❌ AI: '+e.message});
+if(S.submitting)return;
+if(!S.face.registered){toast('Face ID belum terdaftar. Hubungi HR.');return}
+var st=S.status||{};
+if(type==='MASUK'&&st.masuk){toast('Sudah Clock In hari ini.');return}
+if(type==='PULANG'&&st.pulang){toast('Sudah Clock Out hari ini.');return}
+if(type==='PULANG'&&!st.masuk){toast('Anda belum Clock In.');return}
+ATT.type=type;ATT.submitting=false;
+$('attTitle').textContent=type==='MASUK'?'Clock In':'Clock Out';
+$('attStep').textContent='Langkah 1 dari 2';
+var now=new Date();
+$('attDate').textContent=now.getDate()+' '+bulanID(now)+' '+now.getFullYear();
+$('attStep1').style.display='block';
+$('attStep2').style.display='none';
+$('attDone').style.display='none';
+$('btnNext1').disabled=true;
+$('mapBox').innerHTML='<div class="empty" style="padding-top:110px">📍 Mengambil lokasi...</div>';
+$('gpsInfo').textContent='⏳ Menunggu GPS...';
+$('gpsWarn').style.display='none';
+go('s-att');
+refreshGps();
+camStart().catch(function(e){$('camStatus').textContent='❌ Kamera: '+e.message});
+ensureNets().catch(function(e){$('camStatus').textContent='❌ AI: '+e.message});
+}
+function renderGpsUi(){
+var p=GPS.pos;
+if(!p)return;
+var chk=inOfficeCheck();
+$('mapBox').innerHTML='<iframe src="'+osmEmbed(p.latitude,p.longitude)+'" loading="lazy"></iframe>';
+$('gpsInfo').textContent='✅ Akurasi ±'+Math.round(p.accuracy)+' m'+(chk.office?' • Radius kantor '+chk.office.radius+' m':'');
+var low=p.accuracy>(S.office?S.office.maxAccuracy:50);
+$('gpsWarn').style.display=low?'flex':'none';
+$('btnNext1').disabled=false;
 }
 async function camStart(){
-  if(CAM.stream)return;
-  var v=$('attVideo');
-  var st=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:640},height:{ideal:480}},audio:false});
-  CAM.stream=st;v.srcObject=st;await v.play();
-  CAM.run=true;camLoop();
+if(CAM.stream)return;
+var v=$('attVideo');
+var st=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:640},height:{ideal:480}},audio:false});
+CAM.stream=st;v.srcObject=st;await v.play();
+CAM.run=true;camLoop();
 }
 function camStop(){
-  CAM.run=false;
-  if(CAM.stream){CAM.stream.getTracks().forEach(function(t){t.stop()});CAM.stream=null}
+CAM.run=false;
+if(CAM.stream){CAM.stream.getTracks().forEach(function(t){t.stop()});CAM.stream=null}
 }
 async function camLoop(){
-  while(CAM.run&&CAM.stream){
-    try{
-      if(NETS.ready){
-        var d=await faceapi.detectSingleFace($('attVideo'),new faceapi.TinyFaceDetectorOptions({inputSize:320,scoreThreshold:.4})).withFaceLandmarks().withFaceDescriptor();
-        if(d&&d.descriptor){CAM.desc=Array.from(d.descriptor);CAM.descAt=Date.now();faceUi()}
-      }
-    }catch(e){}
-    await new Promise(function(r){setTimeout(r,130)});
-  }
+while(CAM.run&&CAM.stream){
+try{
+if(NETS.ready){
+var d=await faceapi.detectSingleFace($('attVideo'),new faceapi.TinyFaceDetectorOptions({inputSize:320,scoreThreshold:.4})).withFaceLandmarks().withFaceDescriptor();
+if(d&&d.descriptor){CAM.desc=Array.from(d.descriptor);CAM.descAt=Date.now();faceUi()}
+}
+}catch(e){}
+await new Promise(function(r){setTimeout(r,130)});
+}
 }
 function faceUi(){
-  if($('attStep2').style.display==='none')return;
-  $('camStatus').textContent='✅ Wajah terdeteksi';
-  $('camStatus').style.color='#69db7c';
-  $('btnKirim').disabled=false;
+if($('attStep2').style.display==='none')return;
+$('camStatus').textContent='✅ Wajah terdeteksi';
+$('camStatus').style.color='#69db7c';
+$('btnKirim').disabled=false;
 }
 function attStep2(){
-  $('attStep1').style.display='none';
-  $('attStep2').style.display='block';
-  $('attStep').textContent='Langkah 2 dari 2';
-  $('attNote').value='';
-  $('camStatus').textContent=NETS.ready?'Mendeteksi wajah...':'⏳ Memuat AI...';
-  $('camStatus').style.color='#fff';
-  $('btnKirim').disabled=true;
-  if(CAM.desc&&Date.now()-CAM.descAt<8000)faceUi();
+$('attStep1').style.display='none';
+$('attStep2').style.display='block';
+$('attStep').textContent='Langkah 2 dari 2';
+$('attNote').value='';
+$('camStatus').textContent=NETS.ready?'Mendeteksi wajah...':'⏳ Memuat AI...';
+$('camStatus').style.color='#fff';
+$('btnKirim').disabled=true;
+if(CAM.desc&&Date.now()-CAM.descAt<8000)faceUi();
 }
 function cancelAttendance(){
-  camStop();
-  go('s-home');
+camStop();
+go('s-home');
 }
 function finishAttendance(){
-  camStop();
-  loadBootstrap();
-  go('s-home');
+camStop();
+loadBootstrap();
+go('s-home');
 }
 async function submitAttendance(){
-  if(ATT.submitting)return;
-  var desc=(CAM.desc&&Date.now()-CAM.descAt<8000)?CAM.desc:null;
-  if(!desc){toast('Wajah belum terdeteksi. Tunggu sebentar...');return}
-  var p=GPS.pos;
-  if(!p){toast('GPS belum tersedia.');return}
-  ATT.submitting=true;
-  var b=$('btnKirim');b.disabled=true;b.innerHTML='<span class="spin"></span> Mengirim...';
-  try{
-    var payload={nik:S.user.nik,tipe:ATT.type,latitude:p.latitude,longitude:p.longitude,accuracy:p.accuracy,address:'',faceDescriptor:desc,catatan:$('attNote').value.trim()};
-    var res=await api('simpanAbsensi',[payload],25000);
-    var chk=inOfficeCheck();
-    if(!res.inOffice){
-      try{
-        var foto=snapPhoto();
-        api('uploadAbsensiFoto',[S.user.nik,res.id,foto],40000).catch(function(){});
-      }catch(e){}
-    }
-    S.status={masuk:ATT.type==='MASUK'?true:(S.status||{}).masuk,pulang:ATT.type==='PULANG'?true:(S.status||{}).pulang,
-      jamMasuk:ATT.type==='MASUK'?res.jam:(S.status||{}).jamMasuk,jamPulang:ATT.type==='PULANG'?res.jam:(S.status||{}).jamPulang,statusApproval:res.statusApproval};
-    $('attStep2').style.display='none';
-    $('attDone').style.display='block';
-    $('attStep').textContent='Selesai';
-    $('doneTitle').textContent=res.statusApproval==='VALID'?(ATT.type==='MASUK'?'Clock In berhasil':'Clock Out berhasil'):'Pengajuan terkirim';
-    $('doneMsg').textContent=res.message;
-    if(S.approver)refreshPending();
-  }catch(e){
-    toast(e.message);
-    b.disabled=false;b.textContent='Kirim';
-  }
-  ATT.submitting=false;
+if(ATT.submitting)return;
+var desc=(CAM.desc&&Date.now()-CAM.descAt<8000)?CAM.desc:null;
+if(!desc){toast('Wajah belum terdeteksi. Tunggu sebentar...');return}
+var p=GPS.pos;
+if(!p){toast('GPS belum tersedia.');return}
+ATT.submitting=true;
+var b=$('btnKirim');b.disabled=true;b.innerHTML='<span class="spin"></span> Mengirim...';
+try{
+var payload={nik:S.user.nik,tipe:ATT.type,latitude:p.latitude,longitude:p.longitude,accuracy:p.accuracy,address:'',faceDescriptor:desc,catatan:$('attNote').value.trim()};
+var res=await api('simpanAbsensi',[payload],25000);
+var chk=inOfficeCheck();
+if(!res.inOffice){
+try{
+var foto=snapPhoto();
+api('uploadAbsensiFoto',[S.user.nik,res.id,foto],40000).catch(function(){});
+}catch(e){}
+}
+S.status={masuk:ATT.type==='MASUK'?true:(S.status||{}).masuk,pulang:ATT.type==='PULANG'?true:(S.status||{}).pulang,
+jamMasuk:ATT.type==='MASUK'?res.jam:(S.status||{}).jamMasuk,jamPulang:ATT.type==='PULANG'?res.jam:(S.status||{}).jamPulang,statusApproval:res.statusApproval};
+$('attStep2').style.display='none';
+$('attDone').style.display='block';
+$('attStep').textContent='Selesai';
+$('doneTitle').textContent=res.statusApproval==='VALID'?(ATT.type==='MASUK'?'Clock In berhasil':'Clock Out berhasil'):'Pengajuan terkirim';
+$('doneMsg').textContent=res.message;
+if(S.approver)refreshPending();
+}catch(e){
+toast(e.message);
+b.disabled=false;b.textContent='Kirim';
+}
+ATT.submitting=false;
 }
 function snapPhoto(){
-  var v=$('attVideo');
-  var w=Math.min(480,v.videoWidth||480),h=Math.round(w*(v.videoHeight||360)/(v.videoWidth||480));
-  var c=document.createElement('canvas');c.width=w;c.height=h;
-  c.getContext('2d').drawImage(v,0,0,w,h);
-  return c.toDataURL('image/jpeg',.5);
+var v=$('attVideo');
+var w=Math.min(480,v.videoWidth||480),h=Math.round(w*(v.videoHeight||360)/(v.videoWidth||480));
+var c=document.createElement('canvas');c.width=w;c.height=h;
+c.getContext('2d').drawImage(v,0,0,w,h);
+return c.toDataURL('image/jpeg',.5);
 }
 
 /* ================================================================
 DAFTAR KEHADIRAN
 ================================================================ */
 function shiftMonth(d){
-  LOGM.m+=d;
-  if(LOGM.m>12){LOGM.m=1;LOGM.y++}
-  if(LOGM.m<1){LOGM.m=12;LOGM.y--}
-  loadLog();
+LOGM.m+=d;
+if(LOGM.m>12){LOGM.m=1;LOGM.y++}
+if(LOGM.m<1){LOGM.m=12;LOGM.y--}
+loadLog();
 }
 function loadLog(){
-  $('logMonth').textContent=bulanID(new Date(LOGM.y,LOGM.m-1))+' '+LOGM.y;
-  $('logList').innerHTML='<div class="empty">Memuat...</div>';
-  api('getRiwayatKehadiran',[S.user.nik,LOGM.y,LOGM.m],25000).then(function(list){
-    if(!list||!list.length){$('logList').innerHTML='<div class="empty"><div class="big">📋</div>Belum ada kehadiran pada periode ini.</div>';return}
-    var html='';
-    list.forEach(function(r){
-      var pill=r.status==='HADIR'?'<span class="pill ok">Hadir</span>':r.status==='BELUM CLOCK OUT'?'<span class="pill warn">Belum Clock Out</span>':'<span class="pill info">'+esc(r.status)+'</span>';
-      html+='<div class="log-row"><div class="d">'+esc(r.tanggal.slice(8))+' '+bulanID(new Date(+r.tanggal.slice(0,4),+r.tanggal.slice(5,7)-1))+'</div>'+
-      '<div class="t">'+(r.masuk?r.masuk.jam.slice(0,5):'—')+' &nbsp;→&nbsp; '+(r.pulang?r.pulang.jam.slice(0,5):'—')+'</div>'+
-      '<div class="s">'+pill+'</div></div>';
-    });
-    $('logList').innerHTML=html;
-  }).catch(function(e){$('logList').innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>'});
+$('logMonth').textContent=bulanID(new Date(LOGM.y,LOGM.m-1))+' '+LOGM.y;
+$('logList').innerHTML='<div class="empty">Memuat...</div>';
+api('getRiwayatKehadiran',[S.user.nik,LOGM.y,LOGM.m],25000).then(function(list){
+if(!list||!list.length){$('logList').innerHTML='<div class="empty"><div class="big">📋</div>Belum ada kehadiran pada periode ini.</div>';return}
+var html='';
+list.forEach(function(r){
+var pill=r.status==='HADIR'?'<span class="pill ok">Hadir</span>':r.status==='BELUM CLOCK OUT'?'<span class="pill warn">Belum Clock Out</span>':'<span class="pill info">'+esc(r.status)+'</span>';
+html+='<div class="log-row"><div class="d">'+esc(r.tanggal.slice(8))+' '+bulanID(new Date(+r.tanggal.slice(0,4),+r.tanggal.slice(5,7)-1))+'</div>'+
+'<div class="t">'+(r.masuk?r.masuk.jam.slice(0,5):'—')+' &nbsp;→&nbsp; '+(r.pulang?r.pulang.jam.slice(0,5):'—')+'</div>'+
+'<div class="s">'+pill+'</div></div>';
+});
+$('logList').innerHTML=html;
+}).catch(function(e){$('logList').innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>'});
 }
 
 /* ================================================================
 CUTI
 ================================================================ */
 function openCutiFormTab(){
-  $('segForm').classList.add('on');$('segList').classList.remove('on');
-  $('cutiFormPane').style.display='block';$('cutiListPane').style.display='none';
-  loadMasterCuti();
+$('segForm').classList.add('on');$('segList').classList.remove('on');
+$('cutiFormPane').style.display='block';$('cutiListPane').style.display='none';
+loadMasterCuti();
 }
 function openCutiListTab(){
-  $('segList').classList.add('on');$('segForm').classList.remove('on');
-  $('cutiFormPane').style.display='none';$('cutiListPane').style.display='block';
-  loadCutiList();
+$('segList').classList.add('on');$('segForm').classList.remove('on');
+$('cutiFormPane').style.display='none';$('cutiListPane').style.display='block';
+loadCutiList();
 }
 function loadMasterCuti(){
-  if(CACHE.masterCuti&&Date.now()-CACHE.masterCutiAt<6*3600*1000){renderCutiOptions();return}
-  api('getMasterCuti',[],20000).then(function(list){
-    CACHE.masterCuti=list;CACHE.masterCutiAt=Date.now();
-    renderCutiOptions();
-  }).catch(function(){});
+if(CACHE.masterCuti&&Date.now()-CACHE.masterCutiAt<6*3600*1000){renderCutiOptions();return}
+api('getMasterCuti',[],20000).then(function(list){
+CACHE.masterCuti=list;CACHE.masterCutiAt=Date.now();
+renderCutiOptions();
+}).catch(function(){});
 }
 function renderCutiOptions(){
-  var sel=$('ctKode');if(!sel)return;
-  sel.innerHTML='<option value="">Pilih jenis cuti...</option>';
-  (CACHE.masterCuti||[]).forEach(function(c){
-    var o=document.createElement('option');o.value=c.kode;o.textContent=c.kode+' - '+c.keterangan;
-    o.setAttribute('data-wajib',c.wajibDokumen?'1':'');sel.appendChild(o);
-  });
-  onCutiKode();
+var sel=$('ctKode');if(!sel)return;
+sel.innerHTML='<option value="">Pilih jenis cuti...</option>';
+(CACHE.masterCuti||[]).forEach(function(c){
+var o=document.createElement('option');o.value=c.kode;o.textContent=c.kode+' - '+c.keterangan;
+o.setAttribute('data-wajib',c.wajibDokumen?'1':'');sel.appendChild(o);
+});
+onCutiKode();
 }
 function onCutiKode(){
-  var sel=$('ctKode');var o=sel.options[sel.selectedIndex];
-  var w=o&&o.getAttribute('data-wajib')==='1';
-  $('ctDocWrap').style.display=w?'block':'none';
-  if(sel.value==='CT'){
-    $('ctSisa').style.display='block';
-    $('ctSisa').innerHTML='📊 Sisa cuti tahunan Anda: <b>'+(S.sisaCT!=null?S.sisaCT:'-')+' hari</b>';
-  }else $('ctSisa').style.display='none';
+var sel=$('ctKode');var o=sel.options[sel.selectedIndex];
+var w=o&&o.getAttribute('data-wajib')==='1';
+$('ctDocWrap').style.display=w?'block':'none';
+if(sel.value==='CT'){
+$('ctSisa').style.display='block';
+$('ctSisa').innerHTML='📊 Sisa cuti tahunan Anda: <b>'+(S.sisaCT!=null?S.sisaCT:'-')+' hari</b>';
+}else $('ctSisa').style.display='none';
 }
 function submitCuti(){
-  var kode=$('ctKode').value,mulai=$('ctMulai').value,selesai=$('ctSelesai').value,alasan=$('ctAlasan').value.trim();
-  if(!kode||!mulai||!selesai||!alasan){toast('Lengkapi semua field wajib.');return}
-  var o=$('ctKode').options[$('ctKode').selectedIndex];
-  var w=o&&o.getAttribute('data-wajib')==='1';
-  var fi=$('ctDoc');
-  function proceed(dok){
-    var b=$('ctBtn');b.disabled=true;b.innerHTML='<span class="spin"></span> Mengirim...';
-    api('submitCuti',[{nik:S.user.nik,kode:kode,tanggalMulai:mulai,tanggalSelesai:selesai,alasan:alasan,dokumen:dok}],40000)
-    .then(function(r){
-      toast(r.message);
-      $('ctKode').value='';$('ctMulai').value='';$('ctSelesai').value='';$('ctAlasan').value='';if(fi)fi.value='';
-      onCutiKode();
-      if(S.approver)refreshPending();
-    })
-    .catch(function(e){toast(e.message)})
-    .then(function(){b.disabled=false;b.textContent='Kirim Pengajuan'});
-  }
-  if(w&&fi.files.length>0){var r=new FileReader();r.onload=function(e){proceed(e.target.result)};r.readAsDataURL(fi.files[0])}
-  else if(w){toast('Dokumen wajib dilampirkan.');return}
-  else proceed(null);
+var kode=$('ctKode').value,mulai=$('ctMulai').value,selesai=$('ctSelesai').value,alasan=$('ctAlasan').value.trim();
+if(!kode||!mulai||!selesai||!alasan){toast('Lengkapi semua field wajib.');return}
+var o=$('ctKode').options[$('ctKode').selectedIndex];
+var w=o&&o.getAttribute('data-wajib')==='1';
+var fi=$('ctDoc');
+function proceed(dok){
+var b=$('ctBtn');b.disabled=true;b.innerHTML='<span class="spin"></span> Mengirim...';
+api('submitCuti',[{nik:S.user.nik,kode:kode,tanggalMulai:mulai,tanggalSelesai:selesai,alasan:alasan,dokumen:dok}],40000)
+.then(function(r){
+toast(r.message);
+$('ctKode').value='';$('ctMulai').value='';$('ctSelesai').value='';$('ctAlasan').value='';if(fi)fi.value='';
+onCutiKode();
+if(S.approver)refreshPending();
+})
+.catch(function(e){toast(e.message)})
+.then(function(){b.disabled=false;b.textContent='Kirim Pengajuan'});
+}
+if(w&&fi.files.length>0){var r=new FileReader();r.onload=function(e){proceed(e.target.result)};r.readAsDataURL(fi.files[0])}
+else if(w){toast('Dokumen wajib dilampirkan.');return}
+else proceed(null);
 }
 function loadCutiList(){
-  $('ctList').innerHTML='<div class="empty">Memuat...</div>';
-  api('getRiwayatCuti',[S.user.nik],25000).then(function(list){
-    DATA.cutiList=list||[];
-    renderCutiList('');
-  }).catch(function(e){$('ctList').innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>'});
+$('ctList').innerHTML='<div class="empty">Memuat...</div>';
+api('getRiwayatCuti',[S.user.nik],25000).then(function(list){
+DATA.cutiList=list||[];
+renderCutiList('');
+}).catch(function(e){$('ctList').innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>'});
 }
 function cutiStatus(x){
-  if(x.statusAtasan==='DITOLAK')return['Ditolak','no'];
-  if(x.statusHR==='DITOLAK')return['Ditolak','no'];
-  if(x.statusHR==='DISETUJUI')return['Disetujui','ok'];
-  if(x.statusAtasan==='DISETUJUI')return['Menunggu HR','warn'];
-  return['Menunggu persetujuan','warn'];
+if(x.statusAtasan==='DITOLAK')return['Ditolak','no'];
+if(x.statusHR==='DITOLAK')return['Ditolak','no'];
+if(x.statusHR==='DISETUJUI')return['Disetujui','ok'];
+if(x.statusAtasan==='DISETUJUI')return['Menunggu HR','warn'];
+return['Menunggu persetujuan','warn'];
 }
 function renderCutiList(q){
-  q=(q||'').toLowerCase();
-  var list=DATA.cutiList.filter(function(x){return!q||x.keterangan.toLowerCase().indexOf(q)>=0});
-  if(!list.length){$('ctList').innerHTML='<div class="empty"><div class="big">📄</div>Belum ada pengajuan cuti.</div>';return}
-  var html='',lastDate='';
-  list.forEach(function(x){
-    var st=cutiStatus(x);
-    var d=x.waktuPengajuan||'';
-    if(d!==lastDate){html+='<div class="date-lbl">'+esc(d)+'</div>';lastDate=d}
-    html+='<div class="req-item" style="cursor:pointer" onclick="openCutiDetail(\''+x.id+'\',false)">'+
-    '<div class="req-ava">'+initials(x.nama)+'</div><div class="req-body">'+
-    '<b>'+esc(x.nama)+'</b><div class="sub">Pengajuan cuti untuk '+esc(x.keterangan)+'</div>'+
-    '<ul><li>'+esc(tglID(x.tanggalMulai))+' s/d '+esc(tglID(x.tanggalSelesai))+' ('+x.totalHari+' hari)</li><li>Alasan: '+esc(x.alasan)+'</li></ul>'+
-    '<span class="pill '+st[1]+'">'+st[0]+'</span></div></div>';
-  });
-  $('ctList').innerHTML=html;
+q=(q||'').toLowerCase();
+var list=DATA.cutiList.filter(function(x){return!q||x.keterangan.toLowerCase().indexOf(q)>=0});
+if(!list.length){$('ctList').innerHTML='<div class="empty"><div class="big">📄</div>Belum ada pengajuan cuti.</div>';return}
+var html='',lastDate='';
+list.forEach(function(x){
+var st=cutiStatus(x);
+var d=x.waktuPengajuan||'';
+if(d!==lastDate){html+='<div class="date-lbl">'+esc(d)+'</div>';lastDate=d}
+html+='<div class="req-item" style="cursor:pointer" onclick="openCutiDetail(\''+x.id+'\',false)">'+
+'<div class="req-ava">'+initials(x.nama)+'</div><div class="req-body">'+
+'<b>'+esc(x.nama)+'</b><div class="sub">Pengajuan cuti untuk '+esc(x.keterangan)+'</div>'+
+'<ul><li>'+esc(tglID(x.tanggalMulai))+' s/d '+esc(tglID(x.tanggalSelesai))+' ('+x.totalHari+' hari)</li><li>Alasan: '+esc(x.alasan)+'</li></ul>'+
+'<span class="pill '+st[1]+'">'+st[0]+'</span></div></div>';
+});
+$('ctList').innerHTML=html;
 }
 function openCutiDetail(id,fromAppr){
-  _backTo=fromAppr?'s-appr':'s-cuti';
-  var x=null;
-  if(fromAppr&&DATA.appr)x=(DATA.appr.cuti||[]).find(function(c){return c.id===id});
-  if(!x)x=DATA.cutiList.find(function(c){return c.id===id});
-  if(!x){toast('Data tidak ditemukan.');return}
-  var isAppr=S.approver&&((S.user.role==='KARYAWAN'&&x.statusAtasan==='PENDING')||((S.user.role==='HR'||S.user.role==='ADMIN')&&x.statusAtasan==='DISETUJUI'&&x.statusHR==='PENDING'));
-  var html='<div class="det-hero"><img src="'+(x.dokumenUrl?driveThumb(x.dokumenUrl):'')+'" onerror="this.parentNode.style.display=\'none\'" alt="">'+
-  '<div class="det-pill">'+statusPill(x.statusHR==='PENDING'&&x.statusAtasan==='DISETUJUI'?'PENDING_HR':(x.statusAtasan==='PENDING'?'PENDING_ATASAN':(x.statusAtasan==='DITOLAK'||x.statusHR==='DITOLAK'?'DITOLAK':'DISETUJUI')))+'</div></div>'+
-  '<div class="det-body">'+
-  '<div class="req-item" style="padding:0 0 14px;border:none"><div class="req-ava">'+initials(x.nama)+'</div><div class="req-body"><b style="font-size:17px">'+esc(x.nama)+'</b><div class="sub">'+esc(x.waktuPengajuan||'')+'</div></div></div>'+
-  '<div class="det-row"><small>Cuti yang diajukan</small><div><b>'+esc(x.keterangan)+'</b></div><div style="color:#555">'+esc(tglID(x.tanggalMulai))+' s/d '+esc(tglID(x.tanggalSelesai))+' ('+x.totalHari+' hr)</div></div>'+
-  '<div class="det-row"><small>Alasan</small><div>'+esc(x.alasan)+'</div></div>'+
-  '<div class="det-row"><small>Status pengajuan</small><div class="tl">'+
-  tlItem('base','Diajukan oleh '+esc(x.nama),x.waktuPengajuan||'')+
-  (x.statusAtasan==='PENDING'?tlItem('wait','Menunggu persetujuan dari atasan',''):
-  x.statusAtasan==='DISETUJUI'?tlItem('ok','Disetujui oleh atasan',''):
-  tlItem('no','Ditolak oleh atasan',x.alasanAtasan||''))+
-  (x.statusAtasan==='DISETUJUI'?(
-  x.statusHR==='PENDING'?tlItem('wait','Menunggu persetujuan dari HR',''):
-  x.statusHR==='DISETUJUI'?tlItem('ok','Disetujui oleh HR',''):
-  tlItem('no','Ditolak oleh HR',x.alasanHR||'')):'')+
-  '</div></div>'+
-  '<div class="field" id="cdNoteWrap" style="'+(isAppr?'':'display:none')+'"><label>Catatan</label><input id="cdNote" placeholder="Opsional"></div>'+
-  (isAppr?'<div class="det-actions"><button class="btn btn-blue" onclick="actCuti(\''+x.id+'\',true)">Setujui</button><button class="btn btn-ghost" onclick="actCuti(\''+x.id+'\',false)">Tolak</button></div>':'')+
-  '</div>';
-  $('cdetBody').innerHTML=html;
-  go('s-cdet');
+_backTo=fromAppr?'s-appr':'s-cuti';
+var x=null;
+if(fromAppr&&DATA.appr)x=(DATA.appr.cuti||[]).find(function(c){return c.id===id});
+if(!x)x=DATA.cutiList.find(function(c){return c.id===id});
+if(!x){toast('Data tidak ditemukan.');return}
+var isAppr=S.approver&&((S.user.role==='KARYAWAN'&&x.statusAtasan==='PENDING')||((S.user.role==='HR'||S.user.role==='ADMIN')&&x.statusAtasan==='DISETUJUI'&&x.statusHR==='PENDING'));
+var html='<div class="det-hero"><img src="'+(x.dokumenUrl?driveThumb(x.dokumenUrl):'')+'" onerror="this.parentNode.style.display=\'none\'" alt="">'+
+'<div class="det-pill">'+statusPill(x.statusHR==='PENDING'&&x.statusAtasan==='DISETUJUI'?'PENDING_HR':(x.statusAtasan==='PENDING'?'PENDING_ATASAN':(x.statusAtasan==='DITOLAK'||x.statusHR==='DITOLAK'?'DITOLAK':'DISETUJUI')))+'</div></div>'+
+'<div class="det-body">'+
+'<div class="req-item" style="padding:0 0 14px;border:none"><div class="req-ava">'+initials(x.nama)+'</div><div class="req-body"><b style="font-size:17px">'+esc(x.nama)+'</b><div class="sub">'+esc(x.waktuPengajuan||'')+'</div></div></div>'+
+'<div class="det-row"><small>Cuti yang diajukan</small><div><b>'+esc(x.keterangan)+'</b></div><div style="color:#555">'+esc(tglID(x.tanggalMulai))+' s/d '+esc(tglID(x.tanggalSelesai))+' ('+x.totalHari+' hr)</div></div>'+
+'<div class="det-row"><small>Alasan</small><div>'+esc(x.alasan)+'</div></div>'+
+'<div class="det-row"><small>Status pengajuan</small><div class="tl">'+
+tlItem('base','Diajukan oleh '+esc(x.nama),x.waktuPengajuan||'')+
+(x.statusAtasan==='PENDING'?tlItem('wait','Menunggu persetujuan dari atasan',''):
+x.statusAtasan==='DISETUJUI'?tlItem('ok','Disetujui oleh atasan',''):
+tlItem('no','Ditolak oleh atasan',x.alasanAtasan||''))+
+(x.statusAtasan==='DISETUJUI'?(
+x.statusHR==='PENDING'?tlItem('wait','Menunggu persetujuan dari HR',''):
+x.statusHR==='DISETUJUI'?tlItem('ok','Disetujui oleh HR',''):
+tlItem('no','Ditolak oleh HR',x.alasanHR||'')):'')+
+'</div></div>'+
+'<div class="field" id="cdNoteWrap" style="'+(isAppr?'':'display:none')+'"><label>Catatan</label><input id="cdNote" placeholder="Opsional"></div>'+
+(isAppr?'<div class="det-actions"><button class="btn btn-blue" onclick="actCuti(\''+x.id+'\',true)">Setujui</button><button class="btn btn-ghost" onclick="actCuti(\''+x.id+'\',false)">Tolak</button></div>':'')+
+'</div>';
+$('cdetBody').innerHTML=html;
+go('s-cdet');
 }
 function tlItem(cls,title,sub){
-  var dot=cls==='wait'?'⏳':cls==='ok'?'✓':cls==='no'?'✕':'•';
-  return'<div class="tl-item"><div class="dot '+cls+'">'+dot+'</div><b>'+esc(title)+'</b>'+(sub?'<span>'+esc(sub)+'</span>':'')+'</div>';
+var dot=cls==='wait'?'⏳':cls==='ok'?'✓':cls==='no'?'✕':'•';
+return'<div class="tl-item"><div class="dot '+cls+'">'+dot+'</div><b>'+esc(title)+'</b>'+(sub?'<span>'+esc(sub)+'</span>':'')+'</div>';
 }
 function actCuti(id,approve){
-  var note=($('cdNote')?$('cdNote').value.trim():'');
-  if(!approve&&!note){note=prompt('Alasan penolakan:')||'';if(!note)return}
-  if(approve&&!confirm('Setujui pengajuan cuti ini?'))return;
-  api('processCutiApproval',[S.user.role,S.user.nik,id,approve?'APPROVE':'REJECT',note]).then(function(r){
-    toast(r.message);logNotif(approve?'✅ Anda menyetujui pengajuan cuti':'❌ Anda menolak pengajuan cuti');
-    refreshPending();go('s-inbox');switchInboxTab(1);loadInbox();
-  }).catch(function(e){toast(e.message)});
+var note=($('cdNote')?$('cdNote').value.trim():'');
+if(!approve&&!note){note=prompt('Alasan penolakan:')||'';if(!note)return}
+if(approve&&!confirm('Setujui pengajuan cuti ini?'))return;
+api('processCutiApproval',[S.user.role,S.user.nik,id,approve?'APPROVE':'REJECT',note]).then(function(r){
+toast(r.message);logNotif(approve?'✅ Anda menyetujui pengajuan cuti':'❌ Anda menolak pengajuan cuti');
+refreshPending();go('s-inbox');switchInboxTab(1);loadInbox();
+}).catch(function(e){toast(e.message)});
 }
 
 /* ================================================================
 KARYAWAN (HR)
 ================================================================ */
 function loadEmployees(){
-  $('empList').innerHTML='<div class="empty">Memuat...</div>';
-  api('getKaryawanSummary',[S.user.role],25000).then(function(r){
-    if(!r||r.ok===false){$('empList').innerHTML='<div class="empty">'+esc((r&&r.error)||'Gagal memuat.')+'</div>';return}
-    DATA.empList=(r.list||[]).filter(function(x){return x.akun==='AKTIF'});
-    renderEmpList('');
-  }).catch(function(e){$('empList').innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>'});
+$('empList').innerHTML='<div class="empty">Memuat...</div>';
+api('getKaryawanSummary',[S.user.role],25000).then(function(r){
+if(!r||r.ok===false){$('empList').innerHTML='<div class="empty">'+esc((r&&r.error)||'Gagal memuat.')+'</div>';return}
+DATA.empList=(r.list||[]).filter(function(x){return x.akun==='AKTIF'});
+renderEmpList('');
+}).catch(function(e){$('empList').innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>'});
 }
 function renderEmpList(q){
-  q=(q||'').toLowerCase();
-  var list=DATA.empList.filter(function(x){return!q||x.nama.toLowerCase().indexOf(q)>=0||x.nik.indexOf(q)>=0});
-  if(!list.length){$('empList').innerHTML='<div class="empty">Tidak ada data.</div>';return}
-  var html='<div class="date-lbl">Karyawan aktif • '+list.length+'</div>';
-  list.forEach(function(x){
-    html+='<div class="req-item"><div class="req-ava">'+initials(x.nama)+'</div><div class="req-body">'+
-    '<b>'+esc(x.nama)+'</b><div class="sub">'+esc(x.nik)+' • '+esc(x.org||'-')+'</div>'+
-    '<div style="font-size:12.5px;color:var(--gray)">'+esc(x.posisi||'-')+' • Face ID: '+(x.face==='YES'?'✅':'❌')+'</div></div></div>';
-  });
-  $('empList').innerHTML=html;
+q=(q||'').toLowerCase();
+var list=DATA.empList.filter(function(x){return!q||x.nama.toLowerCase().indexOf(q)>=0||x.nik.indexOf(q)>=0});
+if(!list.length){$('empList').innerHTML='<div class="empty">Tidak ada data.</div>';return}
+var html='<div class="date-lbl">Karyawan aktif • '+list.length+'</div>';
+list.forEach(function(x){
+html+='<div class="req-item"><div class="req-ava">'+initials(x.nama)+'</div><div class="req-body">'+
+'<b>'+esc(x.nama)+'</b><div class="sub">'+esc(x.nik)+' • '+esc(x.org||'-')+'</div>'+
+'<div style="font-size:12.5px;color:var(--gray)">'+esc(x.posisi||'-')+' • Face ID: '+(x.face==='YES'?'✅':'❌')+'</div></div></div>';
+});
+$('empList').innerHTML=html;
 }
 
 /* ================================================================
 INBOX
 ================================================================ */
 function switchInboxTab(i){
-  $('itab0').classList.toggle('on',i===0);
-  $('itab1').classList.toggle('on',i===1);
-  $('paneNotif').style.display=i===0?'block':'none';
-  $('paneAppr').style.display=i===1?'block':'none';
-  if(i===1)loadApprPane();
+$('itab0').classList.toggle('on',i===0);
+$('itab1').classList.toggle('on',i===1);
+$('paneNotif').style.display=i===0?'block':'none';
+$('paneAppr').style.display=i===1?'block':'none';
+if(i===1)loadApprPane();
 }
 function loadInbox(){
-  switchInboxTab(0);
-  renderNotifs();
-  if(S.approver)refreshPending();
+switchInboxTab(0);
+renderNotifs();
+if(S.approver)refreshPending();
 }
 function localNotifs(){try{return JSON.parse(localStorage.getItem('tk_notif')||'[]')}catch(e){return[]}}
 function logNotif(txt){
-  var l=localNotifs();l.unshift({t:Date.now(),txt:txt});l=l.slice(0,20);
-  try{localStorage.setItem('tk_notif',JSON.stringify(l))}catch(e){}
+var l=localNotifs();l.unshift({t:Date.now(),txt:txt});l=l.slice(0,20);
+try{localStorage.setItem('tk_notif',JSON.stringify(l))}catch(e){}
 }
 function renderNotifs(){
-  loadMyRequests().then(function(r){
-    var items=[];
-    (r.absensi||[]).forEach(function(a){
-      items.push({ic:'📷',t:'Pengajuan presensi '+(a.tipe==='MASUK'?'clock in':'clock out')+' menunggu persetujuan',s:tglID(a.tanggal)+' • '+(a.jam||'').slice(0,5),id:a.id});
-    });
-    (r.cuti||[]).forEach(function(x){
-      items.push({ic:'🏖️',t:'Pengajuan cuti '+x.keterangan+' menunggu persetujuan',s:tglID(x.tanggalMulai)+' ('+x.totalHari+' hari)'});
-    });
-    var st=S.status||{};
-    if(st.masuk)items.push({ic:'✅',t:'Your clock in is submitted',s:'Attendance status updated • '+(st.jamMasuk||'').slice(0,5)});
-    if(st.pulang)items.push({ic:'✅',t:'Your clock out is submitted',s:'Attendance status updated • '+(st.jamPulang||'').slice(0,5)});
-    localNotifs().forEach(function(n){items.push({ic:'🔔',t:n.txt,s:new Date(n.t).toLocaleString('id-ID')})});
-    if(!items.length){$('paneNotif').innerHTML='<div class="empty"><div class="big">🔔</div>Tidak ada notifikasi.</div>';return}
-    $('paneNotif').innerHTML=items.map(function(n){
-      var click=n.id?(' style="cursor:pointer" onclick="openAbsenDetail(\''+n.id+'\',false)"'):'';
-      return'<div class="notif-item"'+click+'><div class="notif-ic">'+n.ic+'</div><div style="flex:1"><b>'+esc(n.t)+'</b><span>'+esc(n.s)+'</span></div></div>';
-    }).join('');
-  }).catch(function(){
-    $('paneNotif').innerHTML='<div class="empty">Gagal memuat notifikasi.</div>';
-  });
+loadMyRequests().then(function(r){
+var items=[];
+(r.absensi||[]).forEach(function(a){
+items.push({ic:'📷',t:'Pengajuan presensi '+(a.tipe==='MASUK'?'clock in':'clock out')+' menunggu persetujuan',s:tglID(a.tanggal)+' • '+(a.jam||'').slice(0,5),id:a.id});
+});
+(r.cuti||[]).forEach(function(x){
+items.push({ic:'🏖️',t:'Pengajuan cuti '+x.keterangan+' menunggu persetujuan',s:tglID(x.tanggalMulai)+' ('+x.totalHari+' hari)'});
+});
+var st=S.status||{};
+if(st.masuk)items.push({ic:'✅',t:'Your clock in is submitted',s:'Attendance status updated • '+(st.jamMasuk||'').slice(0,5)});
+if(st.pulang)items.push({ic:'✅',t:'Your clock out is submitted',s:'Attendance status updated • '+(st.jamPulang||'').slice(0,5)});
+localNotifs().forEach(function(n){items.push({ic:'🔔',t:n.txt,s:new Date(n.t).toLocaleString('id-ID')})});
+if(!items.length){$('paneNotif').innerHTML='<div class="empty"><div class="big">🔔</div>Tidak ada notifikasi.</div>';return}
+$('paneNotif').innerHTML=items.map(function(n){
+var click=n.id?(' style="cursor:pointer" onclick="openAbsenDetail(\''+n.id+'\',false)"'):'';
+return'<div class="notif-item"'+click+'><div class="notif-ic">'+n.ic+'</div><div style="flex:1"><b>'+esc(n.t)+'</b><span>'+esc(n.s)+'</span></div></div>';
+}).join('');
+}).catch(function(){
+$('paneNotif').innerHTML='<div class="empty">Gagal memuat notifikasi.</div>';
+});
 }
 function refreshPending(){
-  if(!S.approver)return Promise.resolve();
-  return api('getPendingApprovalsFull',[S.user.role,S.user.nik],25000).then(function(r){
-    DATA.appr=r;S.pendingTotal=r.total||0;updateBadges();
-    if($('s-inbox').classList.contains('on')&&!$('paneAppr').style.display)renderApprPane();
-    return r;
-  }).catch(function(){});
+if(!S.approver)return Promise.resolve();
+return api('getPendingApprovalsFull',[S.user.role,S.user.nik],25000).then(function(r){
+DATA.appr=r;S.pendingTotal=r.total||0;updateBadges();
+if($('s-inbox').classList.contains('on')&&!$('paneAppr').style.display)renderApprPane();
+return r;
+}).catch(function(){});
 }
 function loadApprPane(){refreshPending().then(function(){renderApprPane()})}
 function renderApprPane(){
-  var r=DATA.appr;
-  if(!r){$('paneAppr').innerHTML='<div class="empty">Memuat...</div>';return}
-  var na=(r.absensi||[]).length,nc=(r.cuti||[]).length;
-  if(!na&&!nc){$('paneAppr').innerHTML='<div class="empty"><div class="big">✅</div>Tidak ada yang perlu disetujui.</div>';return}
-  var html='';
-  if(na)html+='<div class="cat-item" style="cursor:pointer" onclick="openApprList(\'absensi\')"><div class="ci" style="background:#ffe3e3">📷</div><b>Presensi</b><span class="n">'+na+' ›</span></div>';
-  if(nc)html+='<div class="cat-item" style="cursor:pointer" onclick="openApprList(\'cuti\')"><div class="ci" style="background:#d3f9d8">🏖️</div><b>Cuti</b><span class="n">'+nc+' ›</span></div>';
-  $('paneAppr').innerHTML=html;
+var r=DATA.appr;
+if(!r){$('paneAppr').innerHTML='<div class="empty">Memuat...</div>';return}
+var na=(r.absensi||[]).length,nc=(r.cuti||[]).length;
+if(!na&&!nc){$('paneAppr').innerHTML='<div class="empty"><div class="big">✅</div>Tidak ada yang perlu disetujui.</div>';return}
+var html='';
+if(na)html+='<div class="cat-item" style="cursor:pointer" onclick="openApprList(\'absensi\')"><div class="ci" style="background:#ffe3e3">📷</div><b>Presensi</b><span class="n">'+na+' ›</span></div>';
+if(nc)html+='<div class="cat-item" style="cursor:pointer" onclick="openApprList(\'cuti\')"><div class="ci" style="background:#d3f9d8">🏖️</div><b>Cuti</b><span class="n">'+nc+' ›</span></div>';
+$('paneAppr').innerHTML=html;
 }
 function openApprList(kind){
-  _backTo='s-inbox';
-  var r=DATA.appr||{absensi:[],cuti:[]};
-  $('apprTitle').textContent=kind==='absensi'?'Presensi':'Cuti';
-  var html='';
-  if(kind==='absensi'){
-    if(!(r.absensi||[]).length)html='<div class="empty">Tidak ada pengajuan presensi.</div>';
-    else html=r.absensi.map(function(a){return absenItemHtml(a,true)}).join('');
-  }else{
-    if(!(r.cuti||[]).length)html='<div class="empty">Tidak ada pengajuan cuti.</div>';
-    else html=r.cuti.map(function(x){
-      var st=cutiStatus(x);
-      return'<div class="req-item" style="cursor:pointer" onclick="openCutiDetail(\''+x.id+'\',true)"><div class="req-ava">'+initials(x.nama)+'</div><div class="req-body"><b>'+esc(x.nama)+'</b><div class="sub">Pengajuan cuti untuk '+esc(x.keterangan)+'</div><ul><li>'+esc(tglID(x.tanggalMulai))+' s/d '+esc(tglID(x.tanggalSelesai))+' ('+x.totalHari+' hari)</li><li>Alasan: '+esc(x.alasan)+'</li></ul><span class="pill '+st[1]+'">'+st[0]+'</span></div></div>';
-    }).join('');
-  }
-  $('apprList').innerHTML=html;
-  go('s-appr');
+_backTo='s-inbox';
+var r=DATA.appr||{absensi:[],cuti:[]};
+$('apprTitle').textContent=kind==='absensi'?'Presensi':'Cuti';
+var html='';
+if(kind==='absensi'){
+if(!(r.absensi||[]).length)html='<div class="empty">Tidak ada pengajuan presensi.</div>';
+else html=r.absensi.map(function(a){return absenItemHtml(a,true)}).join('');
+}else{
+if(!(r.cuti||[]).length)html='<div class="empty">Tidak ada pengajuan cuti.</div>';
+else html=r.cuti.map(function(x){
+var st=cutiStatus(x);
+return'<div class="req-item" style="cursor:pointer" onclick="openCutiDetail(\''+x.id+'\',true)"><div class="req-ava">'+initials(x.nama)+'</div><div class="req-body"><b>'+esc(x.nama)+'</b><div class="sub">Pengajuan cuti untuk '+esc(x.keterangan)+'</div><ul><li>'+esc(tglID(x.tanggalMulai))+' s/d '+esc(tglID(x.tanggalSelesai))+' ('+x.totalHari+' hari)</li><li>Alasan: '+esc(x.alasan)+'</li></ul><span class="pill '+st[1]+'">'+st[0]+'</span></div></div>';
+}).join('');
+}
+$('apprList').innerHTML=html;
+go('s-appr');
 }
 function absenItemHtml(a,fromAppr){
-  var clk=a.tipe==='MASUK'?'clock in':'clock out';
-  var addr=String(a.address||'');
-  var alasan=addr.indexOf('📝')===0?addr.slice(2).trim():(addr||'Lokasi luar kantor');
-  return'<div class="req-item" style="cursor:pointer" onclick="openAbsenDetail(\''+a.id+'\','+(fromAppr?'true':'false')+')">'+
-  '<div class="req-ava">'+initials(a.nama)+'</div><div class="req-body">'+
-  '<b>'+esc(a.nama)+'</b><div class="sub">Pengajuan presensi online</div>'+
-  '<ul><li>'+esc(tglID(a.tanggal))+', '+clk+': '+(a.jam||'').slice(0,5)+'</li>'+
-  '<li>Alasan: '+esc(alasan)+'</li></ul>'+
-  statusPill(a.statusApproval)+'</div></div>';
+var clk=a.tipe==='MASUK'?'clock in':'clock out';
+var addr=String(a.address||'');
+var alasan=addr.indexOf('📝')===0?addr.slice(2).trim():(addr||'Lokasi luar kantor');
+return'<div class="req-item" style="cursor:pointer" onclick="openAbsenDetail(\''+a.id+'\','+(fromAppr?'true':'false')+')">'+
+'<div class="req-ava">'+initials(a.nama)+'</div><div class="req-body">'+
+'<b>'+esc(a.nama)+'</b><div class="sub">Pengajuan presensi online</div>'+
+'<ul><li>'+esc(tglID(a.tanggal))+', '+clk+': '+(a.jam||'').slice(0,5)+'</li>'+
+'<li>Alasan: '+esc(alasan)+'</li></ul>'+
+statusPill(a.statusApproval)+'</div></div>';
 }
 
 /* ================================================================
-DETAIL PRESENSI + APPROVE
+DETAIL PRESENSI + AKSI APPROVE
 ================================================================ */
 function openAbsenDetail(id,fromAppr){
-  _backTo=fromAppr?'s-appr':'s-home';
-  var a=null;
-  if(fromAppr&&DATA.appr)a=(DATA.appr.absensi||[]).find(function(x){return x.id===id});
-  if(!a&&DATA.myReq)a=(DATA.myReq.absensi||[]).find(function(x){return x.id===id});
-  if(!a){toast('Data tidak ditemukan.');return}
-  renderAbsenDetail(a,fromAppr);
+_backTo=fromAppr?'s-appr':'s-home';
+var a=null;
+if(fromAppr&&DATA.appr)a=(DATA.appr.absensi||[]).find(function(x){return x.id===id});
+if(!a&&DATA.myReq)a=(DATA.myReq.absensi||[]).find(function(x){return x.id===id});
+if(!a){toast('Data tidak ditemukan.');return}
+renderAbsenDetail(a,fromAppr);
 }
 function renderAbsenDetail(a,fromAppr){
-  var canAct=fromAppr&&(
-    (S.user.role==='KARYAWAN'&&a.statusApproval==='PENDING_ATASAN')||
-    ((S.user.role==='HR'||S.user.role==='ADMIN')&&(a.statusApproval==='PENDING_HR'||a.statusApproval==='PENDING_ATASAN')));
-  var addr=String(a.address||'');
-  var alasan=addr.indexOf('📝')===0?addr.slice(2).trim():(addr||'Lokasi luar kantor');
-  var hero;
-  if(a.fotoUrl&&a.latitude){
-    hero='<div class="det-hero"><div class="map-half"><iframe src="'+osmEmbed(Number(a.latitude),Number(a.longitude))+'" loading="lazy"></iframe></div><div class="ph-half"><img src="'+driveThumb(a.fotoUrl)+'" onerror="this.parentNode.style.display=\'none\'" alt=""></div><div class="det-pill">'+statusPill(a.statusApproval)+'</div></div>';
-  }else if(a.latitude){
-    hero='<div class="det-hero"><iframe src="'+osmEmbed(Number(a.latitude),Number(a.longitude))+'" style="width:100%;height:100%;border:0" loading="lazy"></iframe><div class="det-pill">'+statusPill(a.statusApproval)+'</div></div>';
-  }else hero='<div class="det-hero"><div class="empty" style="padding-top:80px">Tidak ada foto</div><div class="det-pill">'+statusPill(a.statusApproval)+'</div></div>';
-  var tlHtml='';
-  if(a.statusApproval==='PENDING_ATASAN'){
-    tlHtml=tlItem('wait','Menunggu persetujuan dari atasan','')+tlItem('base','Diajukan oleh '+esc(a.nama),a.waktuPengajuan||'');
-  }else if(a.statusApproval==='PENDING_HR'){
-    tlHtml=tlItem('wait','Menunggu persetujuan dari HR','')+tlItem('ok','Disetujui oleh atasan','')+tlItem('base','Diajukan oleh '+esc(a.nama),a.waktuPengajuan||'');
-  }else if(a.statusApproval==='DISETUJUI'){
-    tlHtml=tlItem('ok','Disetujui oleh HR','')+tlItem('ok','Disetujui oleh atasan','')+tlItem('base','Diajukan oleh '+esc(a.nama),a.waktuPengajuan||'');
-  }else{
-    tlHtml=tlItem('no','Ditolak',a.alasanApproval||'')+tlItem('base','Diajukan oleh '+esc(a.nama),a.waktuPengajuan||'');
-  }
-  $('adetBody').innerHTML=hero+
-  '<div class="det-body">'+
-  '<div class="req-item" style="padding:0 0 14px;border:none"><div class="req-ava">'+initials(a.nama)+'</div><div class="req-body"><b style="font-size:17px">'+esc(a.nama)+'</b><div class="sub">'+esc(a.waktuPengajuan||'')+'</div></div></div>'+
-  '<div class="det-row"><small>Presensi online yang diajukan</small><div><b>'+esc(tglID(a.tanggal))+'</b></div><div style="color:#555">'+esc(a.tipe==='MASUK'?'Clock in':'Clock out')+': '+(a.jam||'').slice(0,5)+'</div></div>'+
-  '<div class="det-row"><small>Alasan</small><div>'+esc(alasan)+'</div></div>'+
-  (a.latitude?'<div class="det-row"><small>Lokasi</small><a href="https://www.google.com/maps?q='+a.latitude+','+a.longitude+'" target="_blank">Lihat detail</a></div>':'')+
-  '<div class="det-row"><small>Status pengajuan</small><div class="tl">'+tlHtml+'</div></div>'+
-  '<div class="field" id="adNoteWrap" style="'+(canAct?'':'display:none')+'"><label>Catatan</label><input id="adNote" placeholder="Opsional"></div>'+
-  (canAct?'<div class="det-actions"><button class="btn btn-blue" onclick="actAbsen(\''+a.id+'\',true)">Setujui</button><button class="btn btn-ghost" onclick="actAbsen(\''+a.id+'\',false)">Tolak</button></div>':'')+
-  '</div>';
-  go('s-adet');
+var canAct=fromAppr&&(
+(S.user.role==='KARYAWAN'&&a.statusApproval==='PENDING_ATASAN')||
+((S.user.role==='HR'||S.user.role==='ADMIN')&&(a.statusApproval==='PENDING_HR'||a.statusApproval==='PENDING_ATASAN')));
+var addr=String(a.address||'');
+var alasan=addr.indexOf('📝')===0?addr.slice(2).trim():(addr||'Lokasi luar kantor');
+var hero;
+if(a.fotoUrl&&a.latitude){
+hero='<div class="det-hero"><div class="map-half"><iframe src="'+osmEmbed(Number(a.latitude),Number(a.longitude))+'" loading="lazy"></iframe></div><div class="ph-half"><img src="'+driveThumb(a.fotoUrl)+'" onerror="this.parentNode.style.display=\'none\'" alt=""></div><div class="det-pill">'+statusPill(a.statusApproval)+'</div></div>';
+}else if(a.latitude){
+hero='<div class="det-hero"><iframe src="'+osmEmbed(Number(a.latitude),Number(a.longitude))+'" style="width:100%;height:100%;border:0" loading="lazy"></iframe><div class="det-pill">'+statusPill(a.statusApproval)+'</div></div>';
+}else hero='<div class="det-hero"><div class="empty" style="padding-top:80px">Tidak ada foto</div><div class="det-pill">'+statusPill(a.statusApproval)+'</div></div>';
+var tlHtml='';
+if(a.statusApproval==='PENDING_ATASAN'){
+tlHtml=tlItem('wait','Menunggu persetujuan dari atasan','')+tlItem('base','Diajukan oleh '+esc(a.nama),a.waktuPengajuan||'');
+}else if(a.statusApproval==='PENDING_HR'){
+tlHtml=tlItem('wait','Menunggu persetujuan dari HR','')+tlItem('ok','Disetujui oleh atasan','')+tlItem('base','Diajukan oleh '+esc(a.nama),a.waktuPengajuan||'');
+}else if(a.statusApproval==='DISETUJUI'){
+tlHtml=tlItem('ok','Disetujui oleh HR','')+tlItem('ok','Disetujui oleh atasan','')+tlItem('base','Diajukan oleh '+esc(a.nama),a.waktuPengajuan||'');
+}else{
+tlHtml=tlItem('no','Ditolak',a.alasanApproval||'')+tlItem('base','Diajukan oleh '+esc(a.nama),a.waktuPengajuan||'');
+}
+$('adetBody').innerHTML=hero+
+'<div class="det-body">'+
+'<div class="req-item" style="padding:0 0 14px;border:none"><div class="req-ava">'+initials(a.nama)+'</div><div class="req-body"><b style="font-size:17px">'+esc(a.nama)+'</b><div class="sub">'+esc(a.waktuPengajuan||'')+'</div></div></div>'+
+'<div class="det-row"><small>Presensi online yang diajukan</small><div><b>'+esc(tglID(a.tanggal))+'</b></div><div style="color:#555">'+esc(a.tipe==='MASUK'?'Clock in':'Clock out')+': '+(a.jam||'').slice(0,5)+'</div></div>'+
+'<div class="det-row"><small>Alasan</small><div>'+esc(alasan)+'</div></div>'+
+(a.latitude?'<div class="det-row"><small>Lokasi</small><a href="https://www.google.com/maps?q='+a.latitude+','+a.longitude+'" target="_blank">Lihat detail</a></div>':'')+
+'<div class="det-row"><small>Status pengajuan</small><div class="tl">'+tlHtml+'</div></div>'+
+'<div class="field" id="adNoteWrap" style="'+(canAct?'':'display:none')+'"><label>Catatan</label><input id="adNote" placeholder="Opsional"></div>'+
+(canAct?'<div class="det-actions"><button class="btn btn-blue" onclick="actAbsen(\''+a.id+'\',true)">Setujui</button><button class="btn btn-ghost" onclick="actAbsen(\''+a.id+'\',false)">Tolak</button></div>':'')+
+'</div>';
+go('s-adet');
 }
 function actAbsen(id,approve){
-  var note=($('adNote')?$('adNote').value.trim():'');
-  if(!approve&&!note){note=prompt('Alasan penolakan:')||'';if(!note)return}
-  if(approve&&!confirm('Setujui pengajuan presensi ini?'))return;
-  api('processApproval',[S.user.role,S.user.nik,id,approve?'APPROVE':'REJECT',note]).then(function(r){
-    toast(r.message);logNotif(approve?'✅ Anda menyetujui pengajuan presensi':'❌ Anda menolak pengajuan presensi');
-    refreshPending();
-    if(_backTo==='s-appr'){openApprList('absensi')}
-    else{go('s-home')}
-  }).catch(function(e){toast(e.message)});
+var note=($('adNote')?$('adNote').value.trim():'');
+if(!approve&&!note){note=prompt('Alasan penolakan:')||'';if(!note)return}
+if(approve&&!confirm('Setujui pengajuan presensi ini?'))return;
+api('processApproval',[S.user.role,S.user.nik,id,approve?'APPROVE':'REJECT',note]).then(function(r){
+toast(r.message);logNotif(approve?'✅ Anda menyetujui pengajuan presensi':'❌ Anda menolak pengajuan presensi');
+refreshPending();
+if(_backTo==='s-appr'){openApprList('absensi')}
+else{go('s-home')}
+}).catch(function(e){toast(e.message)});
 }
 
 /* ================================================================
-REGISTRASI FACE ID
+REGISTRASI FACE ID SENDIRI
 ================================================================ */
 async function registerFaceSelf(){
-  if(!S.face.canRegister){toast('Akses registrasi belum diberikan HR.');return}
-  FACESELF.desc=null;
-  openSheet('shFace');
-  $('faceStatus').textContent='Menyalakan kamera...';
-  $('faceStatus').style.color='#fff';
-  $('faceSaveBtn').disabled=true;
-  try{
-    await ensureNets();
-    var v=$('faceVideo');
-    if(!FACESELF.stream){
-      FACESELF.stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});
-      v.srcObject=FACESELF.stream;await v.play();
-    }
-    FACESELF.run=true;
-    while(FACESELF.run&&FACESELF.stream&&!FACESELF.desc){
-      try{
-        var d=await faceapi.detectSingleFace(v,new faceapi.TinyFaceDetectorOptions({inputSize:320,scoreThreshold:.4})).withFaceLandmarks().withFaceDescriptor();
-        if(d&&d.descriptor){FACESELF.desc=Array.from(d.descriptor)}
-      }catch(e){}
-      if(!FACESELF.desc){$('faceStatus').textContent='Mendeteksi wajah...';await new Promise(function(r){setTimeout(r,180)})}
-    }
-    if(FACESELF.desc){
-      $('faceStatus').textContent='✅ Wajah terdeteksi';
-      $('faceStatus').style.color='#69db7c';
-      $('faceSaveBtn').disabled=false;
-    }
-  }catch(e){
-    $('faceStatus').textContent='❌ '+e.message;
-  }
+if(!S.face.canRegister){toast('Akses registrasi belum diberikan HR.');return}
+FACESELF.desc=null;
+openSheet('shFace');
+$('faceStatus').textContent='Menyalakan kamera...';
+$('faceStatus').style.color='#fff';
+$('faceSaveBtn').disabled=true;
+try{
+await ensureNets();
+var v=$('faceVideo');
+if(!FACESELF.stream){
+FACESELF.stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});
+v.srcObject=FACESELF.stream;await v.play();
+}
+FACESELF.run=true;
+while(FACESELF.run&&FACESELF.stream&&!FACESELF.desc){
+try{
+var d=await faceapi.detectSingleFace(v,new faceapi.TinyFaceDetectorOptions({inputSize:320,scoreThreshold:.4})).withFaceLandmarks().withFaceDescriptor();
+if(d&&d.descriptor){FACESELF.desc=Array.from(d.descriptor)}
+}catch(e){}
+if(!FACESELF.desc){$('faceStatus').textContent='Mendeteksi wajah...';await new Promise(function(r){setTimeout(r,180)})}
+}
+if(FACESELF.desc){
+$('faceStatus').textContent='✅ Wajah terdeteksi';
+$('faceStatus').style.color='#69db7c';
+$('faceSaveBtn').disabled=false;
+}
+}catch(e){
+$('faceStatus').textContent='❌ '+e.message;
+}
 }
 function stopFaceSelf(){
-  FACESELF.run=false;
-  if(FACESELF.stream){FACESELF.stream.getTracks().forEach(function(t){t.stop()});FACESELF.stream=null}
-  var v=$('faceVideo');if(v)v.srcObject=null;
+FACESELF.run=false;
+if(FACESELF.stream){FACESELF.stream.getTracks().forEach(function(t){t.stop()});FACESELF.stream=null}
+var v=$('faceVideo');if(v)v.srcObject=null;
 }
 function saveSelfFace(){
-  if(!FACESELF.desc)return;
-  var b=$('faceSaveBtn');b.disabled=true;b.innerHTML='<span class="spin"></span> Menyimpan...';
-  api('saveMyFaceDescriptor',[S.user.nik,FACESELF.desc]).then(function(r){
-    toast(r.message);S.face.registered=true;S.face.canRegister=false;
-    renderFaceBanner();closeSheet();
-  }).catch(function(e){toast(e.message);b.disabled=false;b.textContent='Simpan Face ID'});
+if(!FACESELF.desc)return;
+var b=$('faceSaveBtn');b.disabled=true;b.innerHTML='<span class="spin"></span> Menyimpan...';
+api('saveMyFaceDescriptor',[S.user.nik,FACESELF.desc]).then(function(r){
+toast(r.message);S.face.registered=true;S.face.canRegister=false;
+renderFaceBanner();closeSheet();
+}).catch(function(e){toast(e.message);b.disabled=false;b.textContent='Simpan Face ID'});
 }
 
 /* ================================================================
 MY PENDING REQUESTS
 ================================================================ */
 function loadMyRequests(){
-  return api('getMyPendingRequests',[S.user.nik],25000).then(function(r){
-    DATA.myReq=r;return r;
-  }).catch(function(){DATA.myReq={absensi:[],cuti:[]};return DATA.myReq});
+return api('getMyPendingRequests',[S.user.nik],25000).then(function(r){
+DATA.myReq=r;return r;
+}).catch(function(){DATA.myReq={absensi:[],cuti:[]};return DATA.myReq});
 }
 
 /* ================================================================
 TEAM (approver)
 ================================================================ */
 function loadTeam(){
-  if(!S.approver)return Promise.resolve([]);
-  if(S.user.role==='HR'||S.user.role==='ADMIN'){
-    return api('getKaryawanSummary',[S.user.role],25000).then(function(r){
-      var l=(r&&r.list||[]).filter(function(x){return x.akun==='AKTIF'}).slice(0,12);
-      renderTeam(l);return l;
-    }).catch(function(){return[]});
-  }
-  return Promise.resolve([]);
+if(!S.approver)return Promise.resolve([]);
+if(S.user.role==='HR'||S.user.role==='ADMIN'){
+return api('getKaryawanSummary',[S.user.role],25000).then(function(r){
+var l=(r&&r.list||[]).filter(function(x){return x.akun==='AKTIF'}).slice(0,12);
+renderTeam(l);return l;
+}).catch(function(){return[]});
+}
+return Promise.resolve([]);
 }
 function renderTeam(list){
-  if(!list||!list.length){$('teamBlock').style.display='none';return}
-  $('teamBlock').style.display='block';
-  $('teamRow').innerHTML=list.map(function(x){
-    return'<div class="team-ava"><div class="cir">'+initials(x.nama)+'</div><span>'+esc(x.nama.split(' ')[0])+'</span></div>';
-  }).join('');
+if(!list||!list.length){$('teamBlock').style.display='none';return}
+$('teamBlock').style.display='block';
+$('teamRow').innerHTML=list.map(function(x){
+return'<div class="team-ava"><div class="cir">'+initials(x.nama)+'</div><span>'+esc(x.nama.split(' ')[0])+'</span></div>';
+}).join('');
 }
 
 /* ================================================================
 INIT
 ================================================================ */
 document.addEventListener('DOMContentLoaded',function(){
-  $('lgPin').addEventListener('keypress',function(e){if(e.key==='Enter')doLogin()});
-  var u=loadSession();
-  if(u && getToken()){
-    S.user=u;
-    api('getMyProfile',[u.nik],15000).then(function(r){
-      S.user.employee=r.profile;S.user.role=r.profile.role||u.role;saveSession();
-      enterApp();
-    }).catch(function(){
-      clearAllSession();
-    });
-  } else if(!getToken()) {
-    try{localStorage.removeItem('tk_sess')}catch(e){}
-  }
+$('lgPin').addEventListener('keypress',function(e){if(e.key==='Enter')doLogin()});
+/* Jika tidak ada token, bersihkan session lama */
+if(!getToken()){
+  try{localStorage.removeItem('tk_sess')}catch(e){}
+}
+var u=loadSession();
+if(u && getToken()){
+  S.user=u;
+  api('getMyProfile',[u.nik],15000).then(function(r){
+    S.user.employee=r.profile;S.user.role=r.profile.role||u.role;saveSession();
+    enterApp();
+  }).catch(function(){
+    clearAllSession();
+  });
+}
 });
 </script>
 </body>
