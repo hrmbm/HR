@@ -2403,6 +2403,21 @@ input, select, textarea {
   }
 }
 
+
+/* ReHolz HRIS navigation groups and themed placeholders */
+.rh-nav-section{padding:15px 13px 6px;color:#9a8069;font-size:10px;font-weight:800;letter-spacing:1.05px;line-height:1.3}
+.rh-placeholder-link .d-icon{font-size:19px;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:#f4eee5;border:1px solid #e3d4c1;flex-shrink:0}
+.rh-placeholder-link{min-height:43px}
+.rh-placeholder-link>span:last-child{font-size:12px}
+.rh-placeholder-shade{position:fixed;inset:0;z-index:99999;background:rgba(28,39,31,.42);display:flex;align-items:center;justify-content:center;padding:20px}
+.rh-placeholder-card{width:min(540px,100%);background:#fbf8f2;color:#244b37;border:1px solid #d9c9b4;border-radius:18px;box-shadow:0 22px 70px #1e2d2450;padding:28px;font-family:inherit}
+.rh-placeholder-kicker{font-size:11px;letter-spacing:1.2px;font-weight:800;color:#9b7654;text-transform:uppercase}
+.rh-placeholder-card h2{margin:8px 0 6px;font-size:24px;color:#244b37}
+.rh-placeholder-card p{font-size:14px;line-height:1.6;color:#6d6255;margin:8px 0}
+.rh-placeholder-note{margin-top:20px;padding:12px 14px;border-radius:10px;background:#f1e8da;font-size:12px;color:#71583f}
+.rh-placeholder-actions{display:flex;justify-content:flex-end;margin-top:22px}
+.rh-placeholder-actions button{border:0;border-radius:9px;background:#244b37;color:#fff;padding:10px 18px;font-weight:700;cursor:pointer}
+
 </style>
 <base target="_blank">
 </head>
@@ -2550,6 +2565,29 @@ input, select, textarea {
   </svg></span>
       <span>Face ID AI</span>
     </button>
+    <div class="rh-nav-section">MANAJEMEN SDM</div>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Direktori Karyawan','Employees','Daftar karyawan, filter, status kerja, dan detail profil.');"><span class="d-icon">👥</span><span>Direktori Karyawan</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Perencanaan Tenaga Kerja','Employees','Perencanaan kebutuhan dan formasi karyawan.');"><span class="d-icon">📊</span><span>Manpower Planning</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Karyawan Baru','Employees','Pengajuan new joiner dan proses onboarding.');"><span class="d-icon">🌱</span><span>New Joiner & Onboarding</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Teguran Karyawan','Employees','Pencatatan surat teguran dan riwayat tindakan disiplin.');"><span class="d-icon">📄</span><span>Teguran Karyawan</span></button>
+    <div class="rh-nav-section">WAKTU & KEHADIRAN</div>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Jadwal & Shift','Time','Pengaturan jadwal kerja, shift, dan kalender kerja.');"><span class="d-icon">🗓️</span><span>Jadwal & Shift</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Lembur','Time','Pengajuan, pencatatan, dan persetujuan lembur.');"><span class="d-icon">⏱️</span><span>Lembur</span></button>
+    <div class="rh-nav-section">REKRUTMEN</div>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Recruitment Overview','Recruitment','Ringkasan lowongan dan proses rekrutmen.');"><span class="d-icon">🧭</span><span>Overview Rekrutmen</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Lowongan Kerja','Recruitment','Pengelolaan daftar lowongan kerja.');"><span class="d-icon">💼</span><span>Job Listings</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Kandidat','Recruitment','Database kandidat dan tahapan seleksi.');"><span class="d-icon">🧑‍💼</span><span>Kandidat</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Kalender Rekrutmen','Recruitment','Jadwal wawancara dan aktivitas rekrutmen.');"><span class="d-icon">📅</span><span>Kalender Rekrutmen</span></button>
+    <div class="rh-nav-section">KEUANGAN & PRODUKTIVITAS</div>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Payroll','Payroll','Penggajian, komponen gaji, dan periode payroll.');"><span class="d-icon">💰</span><span>Payroll</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Reimbursement','Finance','Pengajuan dan persetujuan penggantian biaya.');"><span class="d-icon">🧾</span><span>Reimbursement</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Kasbon & Pinjaman','Finance','Pencatatan kasbon dan pinjaman karyawan.');"><span class="d-icon">🏦</span><span>Kasbon & Pinjaman</span></button>
+    <div class="rh-nav-section">PERUSAHAAN</div>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Aset Perusahaan','Company','Inventaris aset dan penanggung jawab.');"><span class="d-icon">📦</span><span>Aset</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Pengumuman','Company','Pengumuman internal perusahaan.');"><span class="d-icon">📣</span><span>Pengumuman</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Aktivitas & Notifikasi','Company','Log aktivitas, antrean aktivitas, dan notifikasi.');"><span class="d-icon">🔔</span><span>Aktivitas & Notifikasi</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('File Perusahaan','Company','Dokumen dan file bersama perusahaan.');"><span class="d-icon">📁</span><span>Files</span></button>
+    <button class="d-nav-item rh-placeholder-link" onclick="showHrPlaceholder('Report Builder','Company','Pembuatan laporan HR dan ekspor data.');"><span class="d-icon">📈</span><span>Report Builder</span></button>
     <button class="d-nav-item" data-scr="s-inbox" onclick="go('s-inbox');loadInbox()">
       <span class="d-icon"><svg viewBox="0 0 36 36" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -6832,5 +6870,17 @@ function downloadAppHtml() {
 }
 
 </script>
+
+<script>
+function showHrPlaceholder(title, group, description) {
+  document.querySelectorAll('.rh-placeholder-shade').forEach(function(el){el.remove();});
+  var shade=document.createElement('div'); shade.className='rh-placeholder-shade';
+  shade.innerHTML='<section class="rh-placeholder-card" role="dialog" aria-modal="true" aria-labelledby="rh-placeholder-title"><div class="rh-placeholder-kicker">ReHolz HRIS · '+String(group).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];})+'</div><h2 id="rh-placeholder-title">'+String(title).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];})+'</h2><p>'+String(description).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];})+'</p><div class="rh-placeholder-note">Placeholder navigasi — modul ini belum diimplementasikan dan belum membaca/menyimpan data.</div><div class="rh-placeholder-actions"><button type="button" onclick="this.parentNode.parentNode.parentNode.remove()">Kembali</button></div></section>';
+  shade.addEventListener('click',function(e){if(e.target===shade)shade.remove();});
+  document.addEventListener('keydown',function esc(e){if(e.key==='Escape'){shade.remove();document.removeEventListener('keydown',esc);}});
+  document.body.appendChild(shade);
+}
+</script>
+
 </body>
 </html>
