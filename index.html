@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://a.basemaps.cartocdn.com" crossorigin>
 <link rel="preconnect" href="https://b.basemaps.cartocdn.com" crossorigin>
 <meta name="theme-color" content="#244B37">
-<meta name="app-release" content="13.0-ai-studio-responsive-reholz">
-<title>Presensi ReHolz</title>
+<meta name="app-release" content="13.3-talenta-proportion-refinement">
+<title>ReHolz HRIS</title>
 <meta name="description" content="Aplikasi Presensi Karyawan ReHolz dengan tema More-Than-Wood material, Face ID AI, GPS Geofencing, dan Manajemen Cuti." />
 <meta property="og:title" content="Presensi ReHolz" />
 <meta property="og:description" content="Aplikasi Presensi Karyawan ReHolz dengan tema More-Than-Wood material, Face ID AI, GPS Geofencing, dan Manajemen Cuti." />
@@ -2417,6 +2417,60 @@ input, select, textarea {
 .rh-placeholder-note{margin-top:20px;padding:12px 14px;border-radius:10px;background:#f1e8da;font-size:12px;color:#71583f}
 .rh-placeholder-actions{display:flex;justify-content:flex-end;margin-top:22px}
 .rh-placeholder-actions button{border:0;border-radius:9px;background:#244b37;color:#fff;padding:10px 18px;font-weight:700;cursor:pointer}
+
+
+
+/* v13.3 — restrained Talenta-like proportions; ReHolz palette retained */
+@media (max-width: 1023px) {
+  body { font-size: 15px; }
+  .menu-grid { column-gap: 4px !important; row-gap: 10px !important; }
+  .menu-item { padding: 9px 3px 8px !important; gap: 5px !important; min-width: 0 !important; }
+  .menu-ic.re-3d {
+    width: 42px !important; height: 42px !important; min-width: 42px !important;
+    border-radius: 0 !important; border: 0 !important; background: transparent !important;
+    box-shadow: none !important; padding: 0 !important; margin-bottom: 2px !important;
+  }
+  .menu-ic.re-3d svg { width: 38px !important; height: 38px !important; }
+  .menu-item span, .menu-item .menu-label { font-size: 13px !important; line-height: 1.3 !important; font-weight: 400 !important; }
+  .tic { width: 30px !important; height: 30px !important; }
+  #tabbar .tic svg { width: 27px !important; height: 27px !important; }
+  #tabbar button, #tabbar .tab-item { font-size: 12px !important; }
+  .topbar h1 { font-size: 18px !important; }
+  .card, .panel, .section-card { box-shadow: 0 1px 4px rgba(40,35,28,.06) !important; }
+  .rh-placeholder-shade { padding: 14px !important; }
+  .rh-placeholder-card { border-radius: 12px !important; box-shadow: 0 8px 28px rgba(25,35,28,.16) !important; }
+}
+@media (min-width: 1024px) {
+  body { background: #F5F6F8 !important; color: #252A34 !important; font-size: 14px !important; }
+  .desktop-sidebar {
+    top: 56px !important; bottom: 0 !important; width: 224px !important;
+    overflow-y: auto !important; padding: 14px 10px 18px !important;
+    background: #FFFFFF !important; border-right: 1px solid #E4E7EC !important;
+  }
+  .d-brand { padding: 0 10px 14px !important; margin-bottom: 12px !important; border-bottom: 1px solid #ECEEF2 !important; }
+  .d-logo-wrap { width: 112px !important; }
+  .d-hris-tag { font-size: 10px !important; color: #79563D !important; background: #F3EBE1 !important; border-radius: 4px !important; padding: 2px 6px !important; }
+  .d-nav { gap: 2px !important; }
+  .rh-nav-section { padding: 16px 12px 5px !important; color: #7C8492 !important; font-size: 10px !important; font-weight: 650 !important; letter-spacing: .55px !important; }
+  .d-nav-item {
+    min-height: 36px !important; padding: 7px 10px !important; gap: 10px !important;
+    border-radius: 6px !important; background: transparent !important; box-shadow: none !important;
+    color: #525B6B !important; font-size: 13px !important; font-weight: 400 !important;
+  }
+  .d-nav-item:hover { background: #F5F2ED !important; color: #244B37 !important; }
+  .d-nav-item.active { background: #E9F0EA !important; color: #244B37 !important; font-weight: 600 !important; }
+  .d-icon { width: 20px !important; height: 20px !important; min-width: 20px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; background: transparent !important; border: 0 !important; border-radius: 0 !important; }
+  .d-icon svg { width: 18px !important; height: 18px !important; filter: grayscale(1) saturate(.2) !important; opacity: .78 !important; }
+  .rh-placeholder-link .d-icon { width: 20px !important; height: 20px !important; background: transparent !important; border: 0 !important; border-radius: 0 !important; font-size: 16px !important; filter: grayscale(1) !important; }
+  .rh-placeholder-link > span:last-child { font-size: 13px !important; }
+  .desktop-topbar { left: 0 !important; height: 56px !important; padding: 0 24px !important; background: #FFFFFF !important; border-bottom: 1px solid #E4E7EC !important; box-shadow: none !important; }
+  .d-company-title { margin-left: 100px !important; color: #29313D !important; font-size: 14px !important; }
+  .d-company-badge { background: #F3EBE1 !important; color: #79563D !important; border-radius: 4px !important; font-size: 10px !important; }
+  .d-top-search { border: 1px solid #E0E4EA !important; border-radius: 6px !important; box-shadow: none !important; }
+  main, .main-content, #mainContent { margin-left: 224px !important; }
+  .desktop-home-container { max-width: none !important; padding: 24px 28px !important; }
+  .rh-placeholder-card { border-radius: 8px !important; border-color: #E2E5EA !important; box-shadow: 0 8px 26px rgba(25,35,28,.12) !important; }
+}
 
 </style>
 <base target="_blank">
