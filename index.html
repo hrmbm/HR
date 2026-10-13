@@ -2337,6 +2337,72 @@ input, select, textarea {
   box-shadow: 0 4px 10px -2px rgba(61,41,29,0.12), inset 0 1px 1px rgba(255,255,255,0.8), inset 0 -1.5px 2px rgba(90,60,35,0.08);
 }
 
+
+/* ReHolz refinement v13.1: icon-to-frame ratio and Talenta-inspired desktop shell */
+@media (max-width: 1023px) {
+  .menu-ic.re-3d {
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 13px !important;
+    border-width: 1px !important;
+    box-shadow: 0 2px 5px rgba(61,41,29,.09), inset 0 1px 1px rgba(255,255,255,.75) !important;
+  }
+  .menu-ic.re-3d svg { width: 30px !important; height: 30px !important; }
+  .tic, .d-icon {
+    width: 32px;
+    height: 32px;
+  }
+  #tabbar .tic svg { width: 27px !important; height: 27px !important; }
+}
+@media (min-width: 1024px) {
+  body { background: #F0F3F7 !important; }
+  .desktop-sidebar {
+    top: 52px !important;
+    width: 205px !important;
+    padding: 12px 8px 14px !important;
+    background: #F0F3F7 !important;
+    border-right: 1px solid #D5DCE5 !important;
+    box-shadow: none !important;
+  }
+  .d-brand {
+    padding: 0 5px 12px !important;
+    margin-bottom: 10px !important;
+    border-bottom: 1px solid #D1D8E2 !important;
+  }
+  .d-logo-wrap { width: 94px !important; }
+  .d-hris-tag {
+    background: transparent !important;
+    color: #79563D !important;
+    padding: 3px 5px !important;
+  }
+  .d-nav { gap: 2px !important; }
+  .d-nav-item {
+    min-height: 36px !important;
+    padding: 7px 9px !important;
+    border-radius: 7px !important;
+    gap: 9px !important;
+    font-weight: 500 !important;
+    color: #39485B !important;
+  }
+  .d-nav-item:hover { background: #E4EAFB !important; color: #4E5FD2 !important; }
+  .d-nav-item.active {
+    background: #D9E1FF !important;
+    color: #4E5FD2 !important;
+    box-shadow: none !important;
+  }
+  .desktop-topbar {
+    left: 0 !important;
+    height: 52px !important;
+    padding: 0 22px !important;
+    border-bottom: 1px solid #D5DCE5 !important;
+    box-shadow: none !important;
+  }
+  .d-company-title { margin-left: 100px !important; }
+  main, .main-content, #mainContent {
+    margin-left: 205px !important;
+  }
+}
+
 </style>
 <base target="_blank">
 </head>
@@ -2531,10 +2597,7 @@ input, select, textarea {
   </nav>
   <div style="padding-top:14px;border-top:1px solid var(--line-subtle);display:flex;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-direction:column;gap:3px">
-      <div style="font-size:11px;color:var(--txt-muted)">ReHolz HRIS v12.7</div>
-      <a href="/Presensi_ReHolz.html" download="Presensi_ReHolz.html" style="font-size:11px;color:#244B37;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:3px" title="Unduh berkas HTML mandiri">
-        <span>💾 Unduh HTML</span>
-      </a>
+
     </div>
     <button onclick="doLogout()" style="background:none;border:none;color:#8F4232;font-size:12px;font-weight:700;cursor:pointer">Keluar</button>
   </div>
@@ -2900,12 +2963,6 @@ window.__APP_PREPARING_ASSETS = true;
   <text x="140" y="81" font-family="'Segoe UI', -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="600" fill="#1F5C3E" letter-spacing="4.5" text-anchor="middle">MORE THAN WOOD</text>
 </svg>
         </div>
-        <!-- Badge Shift yang Elegan & Proporsional (Pengganti Teks 08-17) -->
-        <div style="display:inline-flex;align-items:center;gap:6px;background:#F4EFE7;border:1px solid rgba(121,86,61,0.18);padding:5px 16px;border-radius:20px;font-size:12px;font-weight:600;color:#244B37;margin-bottom:6px">
-          <span>🌿 Presensi Operasional ReHolz</span>
-          
-        </div>
-
         <div class="clock-pill">
           <button class="ci" id="btnCI" onclick="startAttendance('MASUK')">
             <svg class="clk-ic" viewBox="0 0 24 24" fill="none" stroke="#244B37" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -3181,7 +3238,6 @@ window.__APP_PREPARING_ASSETS = true;
 </svg>
     </div>
     <div class="att-shift-details">
-      <span class="att-shift-tag">🌿 Presensi Jam Kerja Resmi</span>
       <span class="att-shift-date">📅 <span id="attDate">-</span></span>
     </div>
   </div>
