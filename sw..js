@@ -1,4 +1,4 @@
-/* Presensi v12.1 - cache aset statis saja; tidak menyimpan API, sesi, presensi, atau ubin peta. */
+
 'use strict';
 var CACHE_NAME = 'presensi-static-v12-1';
 var SHELL_CACHE = 'presensi-shell-v12-1';
