@@ -1,133 +1,38 @@
+/* ReHolz GitHub Pages service worker — shell only; never cache private API/file data. */
 'use strict';
-
-var CACHE_NAME = 'presensi-static-v13-4';
-var SHELL_CACHE = 'presensi-shell-v13-4';
-var CDN_CACHE = 'presensi-cdn-v13-4';
-var APP_SHELL = ['./'];
-
-self.addEventListener('install', function (event) {
-  event.waitUntil(
-    caches.open(SHELL_CACHE)
-      .then(function (cache) {
-        return cache.addAll(APP_SHELL).catch(function () {});
-      })
-      .then(function () {
-        return self.skipWaiting();
-      })
-  );
-});
-
-self.addEventListener('activate', function (event) {
-  event.waitUntil(
-    caches.keys()
-      .then(function (keys) {
-        return Promise.all(
-          keys.filter(function (key) {
-            // Pertahankan cache versi stabil v12.1.
-            if (
-              key === 'presensi-static-v12-1' ||
-              key === 'presensi-shell-v12-1' ||
-              key === 'presensi-cdn-v12-1'
-            ) {
-              return false;
-            }
-
-            // Hapus cache lama selain cache v13.4.
-            return key.indexOf('presensi-') === 0 &&
-              key !== CACHE_NAME &&
-              key !== SHELL_CACHE &&
-              key !== CDN_CACHE;
-          }).map(function (key) {
-            return caches.delete(key);
-          })
-        );
-      })
-      .then(function () {
-        return self.clients.claim();
-      })
-  );
-});
-
-function isStaticCdn(url) {
-  var host = url.hostname;
-  var path = url.pathname;
-
-  if (
-    (host === 'cdn.jsdelivr.net' || host === 'unpkg.com') &&
-    (
-      path.indexOf('/@vladmandic/face-api@1.7.12/') >= 0 ||
-      path.indexOf('/leaflet@1.9.4/') >= 0
-    )
-  ) {
-    return true;
-  }
-
-  return false;
-}
-
-self.addEventListener('fetch', function (event) {
-  var req = event.request;
-
+const RH_SW_RELEASE = 'rehholz-pages-shell-v14-1';
+const RH_CACHE = 'rehholz-shell-' + RH_SW_RELEASE;
+const RH_SCOPE = new URL(self.registration.scope);
+function inScope(url) { try { const u = new URL(url); return u.origin === RH_SCOPE.origin && u.pathname.startsWith(RH_SCOPE.pathname); } catch (_) { return false; } }
+function cleanUrl(url) { const u = new URL(url); u.search = ''; u.hash = ''; return u.href; }
+self.addEventListener('install', event => { event.waitUntil((async () => { await self.skipWaiting(); })()); });
+self.addEventListener('activate', event => { event.waitUntil((async () => { const keys = await caches.keys(); await Promise.all(keys.filter(k => ((k.startsWith('rehholz-shell-') || k.startsWith('rehholz-app-shell-')) && k !== RH_CACHE)).map(k => caches.delete(k))); await self.clients.claim(); })()); });
+self.addEventListener('message', event => { const d = event.data || {}; if (d.type === 'SKIP_WAITING') self.skipWaiting(); });
+self.addEventListener('fetch', event => {
+  const req = event.request;
   if (req.method !== 'GET') return;
-
-  var url;
-
-  try {
-    url = new URL(req.url);
-  } catch (e) {
-    return;
-  }
-
-  // Navigasi halaman: jaringan terlebih dahulu,
-  // gunakan cache jika jaringan gagal.
-  if (
-    url.origin === self.location.origin &&
-    req.mode === 'navigate'
-  ) {
-    event.respondWith(
-      fetch(req).then(function (response) {
-        if (response && response.ok) {
-          var copy = response.clone();
-
-          caches.open(SHELL_CACHE)
-            .then(function (cache) {
-              return cache.put(req, copy);
-            })
-            .catch(function () {});
+  const u = new URL(req.url);
+  if (u.origin !== RH_SCOPE.origin || !inScope(req.url)) return;
+  if (req.mode === 'navigate') {
+    event.respondWith((async () => {
+      const cache = await caches.open(RH_CACHE); const key = cleanUrl(req.url);
+      try {
+        const fresh = await fetch(new Request(req, {cache:'no-store'}));
+        if (fresh && fresh.ok && fresh.type === 'basic' && (fresh.headers.get('content-type') || '').includes('text/html')) {
+          try { await cache.put(key, fresh.clone()); await cache.put(RH_SCOPE.href, fresh.clone()); } catch (_) {}
+          return fresh;
         }
-
-        return response;
-      }).catch(function () {
-        return caches.match(req).then(function (cached) {
-          return cached || caches.match('./');
-        });
-      })
-    );
-
+      } catch (_) {}
+      return (await cache.match(key)) || (await cache.match(RH_SCOPE.href)) || new Response('<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>ReHolz offline</title><body style="font-family:system-ui;padding:24px"><h2>ReHolz HRIS</h2><p>Halaman aplikasi belum pernah dicache pada perangkat ini. Sambungkan internet lalu buka kembali.</p><p>Data dan transaksi tetap memerlukan koneksi backend.</p></body>', {headers:{'Content-Type':'text/html; charset=utf-8'}, status:503});
+    })());
     return;
   }
-
-  // Hanya pustaka CDN tertentu yang di-cache.
-  // API dan peta tidak dimasukkan ke cache statis.
-  if (!isStaticCdn(url)) return;
-
-  event.respondWith(
-    caches.open(CDN_CACHE).then(function (cache) {
-      return cache.match(req).then(function (cached) {
-        if (cached) return cached;
-
-        return fetch(req).then(function (response) {
-          if (
-            response &&
-            response.ok &&
-            (response.type === 'cors' || response.type === 'basic')
-          ) {
-            cache.put(req, response.clone()).catch(function () {});
-          }
-
-          return response;
-        });
-      });
-    })
-  );
+  // Cache only same-origin static resources. Never cache cross-origin scripts, auth, Drive files, or backend RPCs.
+  if (['script','style','image','font'].indexOf(req.destination) >= 0) {
+    event.respondWith((async () => {
+      const cache = await caches.open(RH_CACHE); const hit = await cache.match(req);
+      const refresh = fetch(req).then(resp => { if (resp && resp.ok && resp.type === 'basic') cache.put(req, resp.clone()).catch(() => {}); return resp; });
+      return hit || refresh;
+    })());
+  }
 });
