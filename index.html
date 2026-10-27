@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="id"><head>
-<meta name="reholz-release" content="v14.1.0-github-pages-fast-bridge">
+<meta name="reholz-release" content="v13.3.0-dashboard-segment1-indonesian">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="preconnect" href="https://unpkg.com" crossorigin="">
@@ -9,8 +9,7 @@
 <link rel="preconnect" href="https://a.basemaps.cartocdn.com" crossorigin="">
 <link rel="preconnect" href="https://b.basemaps.cartocdn.com" crossorigin="">
 <meta name="theme-color" content="#007850">
-<meta name="app-release" content="v14.1.0-github-pages-fast-bridge">
-<meta name="rehholz-gas-url" content="https://script.google.com/macros/s/AKfycby0nBsi2AuHFUj39e3U5Ehag5-2CUgOCDPOjOAbfr5GebxJRoQojUFoMGZ_ld1K0Pdwaw/exec">
+<meta name="app-release" content="v13.8.3.5-remaining-flow-fixes">
 <title>ReHolz HRIS</title>
 <meta name="description" content="Sistem informasi karyawan ReHolz untuk presensi, foto profil, lokasi kantor, dan pengelolaan cuti.">
 <meta property="og:title" content="ReHolz HRIS">
@@ -2520,7 +2519,7 @@ input, select, textarea {
 .clock-pill button.co { color: #007850; font-weight: 700; }
 .clock-pill button.co svg { stroke: #007850; }
 .clock-pill button:disabled { opacity: 0.45; }
-</style><script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/dist/face-api.js"></script><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/dist/face-api.js"></script><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 /* ReHolz appearance is fixed; clear legacy per-device theme overrides. */
 (function(){try{document.documentElement.removeAttribute('data-theme');localStorage.removeItem('rh_theme_v1');localStorage.removeItem('rh_fonts_v1');}catch(e){}})();
@@ -3829,7 +3828,7 @@ window.__APP_PREPARING_ASSETS = true;
         <span class="arr"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#8FA79A" stroke-width="2.2" stroke-linecap="round"><path d="M9 18l6-6-6-6"></path></svg></span>
       </button>
     </div>
-    <div class="hint" id="verTxt">Versi 6.6-REHOLZ-HRIS-APPS-SCRIPT</div>
+    <div class="hint" id="verTxt">Versi 6.6-SUPABASE-REHOLZ-HRIS-AREA-DELEGATE-ROLE-GRID</div>
   </div>
 </section>
 
@@ -4083,9 +4082,11 @@ window.__APP_PREPARING_ASSETS = true;
 
 <!-- Application Core Logic (Inlined for 100% Standalone Export) -->
 <script type="module">
-var APP_VERSION = '6.6-REHOLZ-HRIS-APPS-SCRIPT'; // Native Apps Script backend release.
-var RH_HTML_RELEASE = 'v14.0.0-native-apps-script-backend';
-var RH_DISPLAY_VERSION = 'v14.0.0';
+var SUPABASE_URL = 'https://viynlhmupknbsvmysvdr.supabase.co';
+var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpeW5saG11cGtuYnN2bXlzdmRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0OTgzMzQsImV4cCI6MjEwNzA3NDMzNH0.gCptzMDirS5DGPDs51nVAT1UPlzgwD0pwMc-c-DwaF8';
+var APP_VERSION = '6.6-SUPABASE-REHOLZ-HRIS-AREA-DELEGATE-ROLE-GRID'; // Kept in sync with existing app-version RPC to avoid forced reload loops.
+var RH_HTML_RELEASE = 'v13.8.3.4-face-cache-refresh';
+var RH_DISPLAY_VERSION = 'v13.8.3.3';
 var RH_RELEASE_STORAGE_KEY = 'reh_html_release_seen';
 var RH_RELEASE_UPGRADE_ACTIVE = false;
 var MODEL_URL = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/model/';
@@ -4094,6 +4095,7 @@ var FACE_MATCH_THRESHOLD = 0.55;
 var RPC_TIMEOUT_MS = 20000;
 
 var CDN = {
+  supabase: ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'https://unpkg.com/@supabase/supabase-js@2'],
   leafletJs: ['https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js'],
   leafletCss: ['https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css']
 };
@@ -4186,7 +4188,14 @@ function injectCss(urls, i, res) {
   document.head.appendChild(l);
 }
 
-var LF_LOAD = null;
+var SB_LOAD = null, LF_LOAD = null;
+function ensureSupabase() {
+  if (window.supabase) return Promise.resolve();
+  if (!SB_LOAD) {
+    SB_LOAD = new Promise(function(res, rej) { injectScript(CDN.supabase, 0, res, rej); });
+  }
+  return SB_LOAD;
+}
 
 function ensureLeaflet() {
   if (window.L) { return Promise.resolve(); }
@@ -4200,149 +4209,12 @@ function ensureLeaflet() {
   return LF_LOAD;
 }
 
-var rhBackendClient = null;
-var RH_GAS_WEB_APP_URL = (function () {
-  var m = document.querySelector('meta[name="rehholz-gas-url"]');
-  return String((window.REHOLZ_APPS_SCRIPT_WEBAPP_URL || (m && m.content) || '')).trim();
-})();
-var RH_REMOTE_BRIDGE = { iframe:null, readyPromise:null, resolveReady:null, rejectReady:null, pending:Object.create(null), seq:0, listener:false };
-var RH_RPC_INFLIGHT = new Map();
-var RH_READ_RPC_DEDUPE = new Set([
-  'bootstrap','app_version','ping_server','get_karyawan_options','get_karyawan_summary','get_lokasi_kantor',
-  'get_master_cuti','get_my_attendance_approval_detail','get_my_face_data','get_my_notifications',
-  'get_my_pending_requests','get_my_profile','get_my_timeoff_request_detail','get_org_chart',
-  'get_pending_approvals','get_riwayat_cuti','get_riwayat_kehadiran','get_sisa_cuti','get_status_hari_ini',
-  'get_team_activity','get_face_photos','get_face_registration_progress','get_delegate_options',
-  'hr_attendance_today','hr_attendance_week','hr_get_activity_log','hr_get_attendance_monitoring',
-  'hr_get_attendance_schedule','hr_get_attendance_summary','hr_get_employee_attendance_history',
-  'hr_get_employee_directory','hr_get_leave_list_v2','hr_get_personal_file','hr_get_working_calendar',
-  'hr_leave_yearly_stats','hr_monthly_report','hr_get_employee_doc','hr_list_employee_docs',
-  'admin_get_attendance_history','hr_dashboard_summary','hr_attendance_recap','hr_contract_expiring','hr_get_leave_list'
-]);
-
-/* Native Apps Script host detection. GitHub Pages uses the allowlisted iframe bridge below. */
-function rhIsAppsScriptHost() {
-  return !!(window.google && window.google.script && window.google.script.run);
-}
-function rhBridgeUrl() {
-  if (!RH_GAS_WEB_APP_URL || /PASTE_APPS_SCRIPT_WEB_APP_EXEC_URL_HERE|YOUR_DEPLOYMENT_ID/i.test(RH_GAS_WEB_APP_URL)) {
-    throw new Error('Konfigurasi backend belum diisi: ganti meta rehholz-gas-url dengan URL Web App Apps Script yang berakhir /exec.');
-  }
-  var u;
-  try { u = new URL(RH_GAS_WEB_APP_URL, location.href); } catch (_) { throw new Error('URL Web App Apps Script tidak valid.'); }
-  if (u.protocol !== 'https:' || !/script\.google\.com$/i.test(u.hostname) || !/\/macros\/s\/[^/]+\/exec$/i.test(u.pathname)) {
-    throw new Error('URL backend harus berupa URL resmi Apps Script HTTPS yang berakhir /macros/s/.../exec.');
-  }
-  u.searchParams.set('bridge', '1');
-  return u.href;
-}
-function rhOnBridgeMessage(ev) {
-  var state = RH_REMOTE_BRIDGE;
-  if (!state.iframe || ev.source !== state.iframe.contentWindow || !ev.data || typeof ev.data !== 'object') return;
-  var msg = ev.data;
-  if (msg.type === 'RH_BRIDGE_READY') {
-    if (state.resolveReady) state.resolveReady(true);
-    state.resolveReady = null; state.rejectReady = null;
-    return;
-  }
-  if (msg.type === 'RH_BRIDGE_RESULT' || msg.type === 'RH_BRIDGE_REJECTED') {
-    var p = state.pending[String(msg.requestId || '')];
-    if (!p) return;
-    clearTimeout(p.timer); delete state.pending[String(msg.requestId)];
-    if (msg.type === 'RH_BRIDGE_REJECTED') p.reject(new Error(msg.error || 'Origin frontend tidak diizinkan oleh backend.'));
-    else p.resolve(msg.result);
-  }
-}
-function rhEnsureRemoteBridge(timeoutMs) {
-  if (rhIsAppsScriptHost()) return Promise.resolve(true);
-  if (RH_REMOTE_BRIDGE.readyPromise) return RH_REMOTE_BRIDGE.readyPromise;
-  var bridgeUrl;
-  try { bridgeUrl = rhBridgeUrl(); } catch (e) { return Promise.reject(e); }
-  RH_REMOTE_BRIDGE.readyPromise = new Promise(function (resolve, reject) {
-    var state = RH_REMOTE_BRIDGE;
-    state.resolveReady = resolve; state.rejectReady = reject;
-    if (!state.listener) { window.addEventListener('message', rhOnBridgeMessage); state.listener = true; }
-    var iframe = document.createElement('iframe');
-    iframe.title = 'ReHolz secure backend bridge';
-    iframe.setAttribute('aria-hidden', 'true');
-    iframe.tabIndex = -1;
-    iframe.style.cssText = 'position:fixed;width:1px;height:1px;left:-20px;bottom:0;border:0;opacity:0;pointer-events:none;';
-    iframe.src = bridgeUrl;
-    iframe.onerror = function () { if (state.rejectReady) state.rejectReady(new Error('Gagal memuat Apps Script bridge. Periksa deployment, URL /exec, dan izin embed.')); };
-    state.iframe = iframe;
-    var timer = setTimeout(function () {
-      if (state.resolveReady) {
-        state.resolveReady = null; state.rejectReady = null;
-        state.readyPromise = null;
-        reject(new Error('Apps Script bridge timeout. Pastikan RH_ALLOWED_ORIGINS berisi origin GitHub Pages ini dan deploy versi terbaru.'));
-      }
-    }, timeoutMs || 20000);
-    var originalResolve = state.resolveReady;
-    state.resolveReady = function (v) { clearTimeout(timer); if (originalResolve) originalResolve(v); };
-    document.body.appendChild(iframe);
-  }).catch(function (err) { RH_REMOTE_BRIDGE.readyPromise = null; try { if (RH_REMOTE_BRIDGE.iframe && RH_REMOTE_BRIDGE.iframe.parentNode) RH_REMOTE_BRIDGE.iframe.parentNode.removeChild(RH_REMOTE_BRIDGE.iframe); } catch (_) {} RH_REMOTE_BRIDGE.iframe = null; throw err; });
-  return RH_REMOTE_BRIDGE.readyPromise;
-}
-async function rhRemoteBridgeCall(method, args, timeoutMs) {
-  await rhEnsureRemoteBridge(20000);
-  var state = RH_REMOTE_BRIDGE;
-  if (!state.iframe || !state.iframe.contentWindow) throw new Error('Apps Script bridge frame belum siap.');
-  var id = 'rh-' + Date.now().toString(36) + '-' + (++state.seq).toString(36) + '-' + Math.random().toString(36).slice(2,8);
-  return new Promise(function (resolve, reject) {
-    var ms = timeoutMs || 30000;
-    var timer = setTimeout(function () { delete state.pending[id]; reject(new Error('Timeout: Apps Script backend tidak merespons (' + method + '). Periksa koneksi dan Execution log.')); }, ms);
-    state.pending[id] = {resolve:resolve,reject:reject,timer:timer};
-    try {
-      // Target is this specific iframe; the bridge independently verifies event.origin against RH_ALLOWED_ORIGINS.
-      state.iframe.contentWindow.postMessage({type:'RH_BRIDGE_REQUEST',requestId:id,method:String(method),args:Array.isArray(args)?args:[]}, '*');
-    } catch (e) { clearTimeout(timer); delete state.pending[id]; reject(e); }
-  });
-}
-function rhAppsScriptCall(method, args) {
-  args = args || [];
-  if (!rhIsAppsScriptHost()) {
-    if (method === 'rhNativeRpc') return rhRemoteBridgeCall('rpc', args, 30000);
-    if (method === 'rhCallApiFunction') return rhRemoteBridgeCall('api', args, 45000);
-    return Promise.reject(new Error('Unknown Apps Script bridge method.'));
-  }
-  return new Promise(function (resolve, reject) {
-    var runner = window.google.script.run.withSuccessHandler(resolve).withFailureHandler(function (err) {
-      reject(new Error(err && err.message ? err.message : String(err || 'Apps Script request failed.')));
-    });
-    try {
-      if (method === 'rhNativeRpc') runner.rhNativeRpc(String(args[0] || ''), args[1] || {});
-      else if (method === 'rhCallApiFunction') runner.rhCallApiFunction(String(args[0] || ''), args[1] || []);
-      else reject(new Error('Unknown Apps Script bridge method.'));
-    } catch (err) { reject(err); }
-  });
-}
-async function getBackendClient() {
-  if (!rhIsAppsScriptHost()) await rhEnsureRemoteBridge();
-  if (!rhBackendClient || !rhBackendClient.__rhNativeBackendBridge) {
-    rhBackendClient = {
-      __rhNativeBackendBridge: true,
-      rpc: function (fn, params) {
-        var name = String(fn || '').toLowerCase();
-        var payload = params || {};
-        var useDedupe = RH_READ_RPC_DEDUPE.has(name);
-        var key = '';
-        if (useDedupe) {
-          try { key = name + ':' + JSON.stringify(payload); } catch (_) { useDedupe = false; }
-          if (useDedupe && RH_RPC_INFLIGHT.has(key)) return RH_RPC_INFLIGHT.get(key);
-        }
-        var request = rhIsAppsScriptHost()
-          ? rhAppsScriptCall('rhNativeRpc', [name, payload])
-          : rhRemoteBridgeCall('rpc', [name, payload], 30000);
-        if (useDedupe) {
-          RH_RPC_INFLIGHT.set(key, request);
-          request.then(function () { if (RH_RPC_INFLIGHT.get(key) === request) RH_RPC_INFLIGHT.delete(key); }, function () { if (RH_RPC_INFLIGHT.get(key) === request) RH_RPC_INFLIGHT.delete(key); });
-        }
-        return request;
-      }
-    };
-  }
-  window.__rhNativeBackendClient = rhBackendClient;
-  return rhBackendClient;
+var sb = null;
+async function getSb() {
+  await ensureSupabase();
+  if (!window.supabase) throw new Error('Supabase JS is unavailable.');
+  if (!sb) sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  return sb;
 }
 
 function getToken() { return localStorage.getItem('tk_token') || ''; }
@@ -4355,21 +4227,12 @@ function clearAllSession() {
 }
 
 function withTimeout(p, ms, fn) {
-  return new Promise(function(resolve, reject) {
-    var settled = false;
-    var timer = setTimeout(function() {
-      if (settled) return;
-      settled = true;
-      reject(new Error('Timeout: server did not respond (' + fn + '). Check your connection.'));
-    }, ms);
-    Promise.resolve(p).then(function(value) {
-      if (settled) return;
-      settled = true; clearTimeout(timer); resolve(value);
-    }, function(error) {
-      if (settled) return;
-      settled = true; clearTimeout(timer); reject(error);
-    });
-  });
+  return Promise.race([
+    p,
+    new Promise(function(_, rej) {
+      setTimeout(function() { rej(new Error('Timeout: server did not respond (' + fn + '). Check your connection.')); }, ms);
+    })
+  ]);
 }
 
 var SESSION_GEN = 0;
@@ -4382,7 +4245,7 @@ async function rpc(fn, params, timeoutMs) {
   var gen = SESSION_GEN;
   var ms = timeoutMs || RPC_TIMEOUT_MS;
   try {
-    var c = await withTimeout(getBackendClient(), ms, fn + ' (inisialisasi)');
+    var c = await withTimeout(getSb(), ms, fn + ' (inisialisasi)');
     var r = await withTimeout(c.rpc(fn, params), ms, fn);
     if (stale(gen)) throw new Error('STALE');
     if (r.error) {
@@ -4657,10 +4520,8 @@ function setPrepProgress(p, t) {
 }
 
 function registerAppServiceWorker() {
-  // Apps Script HtmlService is not a static PWA host; its web app cannot serve this app's sw.js.
-  if (rhIsAppsScriptHost()) return Promise.resolve(false);
   if (!('serviceWorker' in navigator)) return Promise.resolve(false);
-  return navigator.serviceWorker.register('./sw.js?v=23', { scope: './', updateViaCache: 'none' }).then(function(registration) {
+  return navigator.serviceWorker.register('./sw.js?v=22', { scope: './', updateViaCache: 'none' }).then(function(registration) {
     // Ask the browser to revalidate sw.js instead of trusting an old HTTP-cache copy.
     try { if (registration && typeof registration.update === 'function') registration.update().catch(function() {}); } catch (e) {}
     // The new worker self-activates; this message also helps older compatible workers.
@@ -5475,7 +5336,7 @@ async function saveFaceReferenceAndRefresh(descriptor, photo) {
     CAM.present = false; CAM.presentAt = 0; CAM.refLastAttemptAt = 0;
     if (S.user.employee) delete S.user.employee.facePhotoVer;
 
-    // Re-read profile version, then fetch the reference descriptor from the native Apps Script backend.
+    // Re-read profile version, then fetch the reference descriptor directly from Supabase.
     await loadBootstrap();
     var fresh = await loadMyDescriptor();
     if (!fresh || !Array.isArray(S.myDescriptor) || S.myDescriptor.length !== 128 || Number(S.myDescriptorVer) !== Number(fresh.photoVer)) {
@@ -6849,10 +6710,25 @@ async function submitAttendance() {
 }
 
 async function callExistingApiFunction(fn, args, timeoutMs) {
-  var gasRequest = rhAppsScriptCall('rhCallApiFunction', [String(fn || ''), args || []]);
-  var gasBody = await withTimeout(gasRequest, timeoutMs || 30000, String(fn || 'file API'));
-  if (!gasBody || gasBody.ok === false) throw new Error(gasBody && (gasBody.error || gasBody.message) || 'Google Drive file request failed.');
-  return gasBody.result;
+  var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+  var timer = controller ? setTimeout(function() { controller.abort(); }, timeoutMs || 30000) : null;
+  try {
+    var response = await fetch(SUPABASE_URL + '/functions/v1/api', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY },
+      body: JSON.stringify({ fn: fn, args: args || [] }),
+      signal: controller ? controller.signal : undefined
+    });
+    var body = {};
+    try { body = await response.json(); } catch (e) {}
+    if (!response.ok || body.ok === false) throw new Error(body.error || body.message || ('Photo API failed (' + response.status + ').'));
+    return body.result;
+  } catch (e) {
+    if (e && e.name === 'AbortError') throw new Error('The photo save request timed out.');
+    throw e;
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
 }
 
 async function uploadEvidenceAsync(absensiId, dataUrl) {
@@ -6886,15 +6762,7 @@ function evidenceStoragePath(value) {
   if (m) {
     try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
   }
-  if (/^https?:\/\//i.test(s)) {
-    try {
-      var u = new URL(s);
-      var host = String(u.hostname || '').toLowerCase();
-      // Route legacy Drive URLs through backend row ownership checks, not direct public-link assumptions.
-      if (host === 'drive.google.com' || host === 'docs.google.com') return s;
-    } catch (e) {}
-    return '';
-  }
+  if (/^https?:\/\//i.test(s)) return '';
   return s.replace(/^\/+/, '').replace(/^evidence\//i, '');
 }
 
@@ -6912,14 +6780,13 @@ async function resolveEvidenceDisplayUrl(value, forceRefresh) {
     var result = await api('getEvidenceSignedUrl', [path], 20000);
     var signed = result && (result.signedUrl || result.signed_url || result.url ||
       (result.data && (result.data.signedUrl || result.data.signed_url || result.data.url)));
-    if (typeof signed !== 'string' || (!/^https?:\/\//i.test(signed) && !/^data:image\//i.test(signed))) {
-      throw new Error((result && (result.message || result.error)) || 'Private attachment URL is not available in the native Drive store. Re-run media migration and audit.');
+    if (typeof signed !== 'string' || !/^https?:\/\//i.test(signed)) {
+      // Public storage URLs can still be used when an older backend cannot issue a signed URL.
+      if (/^https?:\/\//i.test(s) && /\/storage\/v1\/object\/public\/evidence\//i.test(s)) return s;
+      throw new Error((result && (result.message || result.error)) || 'Private attachment URL is not available.');
     }
     RH_EVIDENCE_URL_CACHE.set(path, { url: signed, at: Date.now() });
     return signed;
-  }
-  if (/^https?:\/\//i.test(s) && /\/storage\/v1\/object\//i.test(s)) {
-    throw new Error('Legacy storage URL is not enabled in Apps Script mode. Migrate the file to Google Drive first.');
   }
   if (/^https?:\/\//i.test(s)) return s;
   return s;
@@ -8913,7 +8780,7 @@ Object.assign(window, {
 /* Ekspor tambahan untuk Desktop HR Console & RHMediaCache (tidak mengubah perilaku) */
 Object.assign(window, {
   S: S, DATA: DATA, api: api, esc: esc, initials: initials, toast: toast,
-  tglID: tglID, todayISO: todayISO, getToken: getToken, getBackendClient: getBackendClient,
+  tglID: tglID, todayISO: todayISO, getToken: getToken, getSb: getSb,
   hydrateFaces: hydrateFaces, faceWrap: faceWrap, avaInner: avaInner,
   loadMyRequests: loadMyRequests, RHMediaCache: RHMediaCache,
   // Module-scoped helper is explicitly exported for the classic-script desktop approval console.
@@ -10270,7 +10137,7 @@ function showHrPlaceholder(title, group, description) {
   var cur = 'dash';
   var empUI = { q: '', org: '', st: '', fullList: [], directoryError: '', selected: null, detailTab: 'personal', personalTab: 'basic', relationTab: 'approval', detailExtraByNik: Object.create(null), detailExtraLoadedByNik: Object.create(null), detailExtraLoadingByNik: Object.create(null), cacheAt: 0, loading: false };
   var attUI = { nik: '', y: new Date().getFullYear(), m: new Date().getMonth() + 1 };
-  var dashCache = { at: 0, employeeList: null, fp: null, ap: null, today: null, userKey: '' };
+  var dashCache = { at: 0, employeeList: null };
   var aprCache = { at: 0, absensi: [], cuti: [] };
 
   function isHR() { return !!(window.S && S.user && ['HR','ADMIN','SUPERADMIN'].indexOf(String(S.user.role || '').toUpperCase()) >= 0); }
@@ -10344,8 +10211,6 @@ function showHrPlaceholder(title, group, description) {
 
   /* ---------------- Navigasi halaman ---------------- */
   function goPage(p) {
-    // Always dismiss dashboard tooltips before switching pages; the tooltip is attached to <body>.
-    if (typeof window.RHHideDashboardChartTooltip === 'function') window.RHHideDashboardChartTooltip();
     if (!TITLES[p]) p = 'dash';
     cur = p;
     var btns = document.querySelectorAll('#rkNav button');
@@ -10392,22 +10257,14 @@ function showHrPlaceholder(title, group, description) {
     if (typeof loadKaryawanMgr === 'function') return Promise.resolve(loadKaryawanMgr(!!force));
     return Promise.reject(new Error('loadKaryawanMgr is not available'));
   }
-  function refreshBadge(useCached) {
-    function paint(value) {
+  function refreshBadge() {
+    api('getPendingApprovalsFull', [], 20000).then(function (r) {
+      var value = dashPendingCount(r);
       var n = value === '—' ? 0 : Number(value);
       var b = document.getElementById('rkAprBadge');
       if (b) { b.style.display = n > 0 ? '' : 'none'; b.textContent = n; }
       setDashStat('rkDashStatPending', value);
-    }
-    if (useCached && dashCache.ap) {
-      paint(dashPendingCount(dashCache.ap));
-      return Promise.resolve(dashCache.ap);
-    }
-    return api('getPendingApprovalsFull', [], 20000).then(function (r) {
-      dashCache.ap = r || dashCache.ap;
-      paint(dashPendingCount(r));
-      return r;
-    }).catch(function () { paint(dashPendingCount(dashCache.ap)); return null; });
+    }).catch(function () { setDashStat('rkDashStatPending', dashPendingCount(dashCache.ap)); });
   }
 
   /* ---------------- Grafik SVG ringan (tanpa dependensi baru) ---------------- */
@@ -10444,59 +10301,35 @@ function showHrPlaceholder(title, group, description) {
   function renderDash() {
     var el = document.getElementById('rkp-dash');
     if (!el) return;
-    var dashUserKey = getToken();
-    if (dashCache.userKey !== dashUserKey) {
-      dashCache = { at:0, employeeList:null, fp:null, ap:null, today:null, userKey:dashUserKey };
-    }
-    var cachedOk = dashCache.userKey === dashUserKey && dashCache.at && (Date.now() - dashCache.at) < 45000 && el.dataset.filled === '1';
+    var cachedOk = dashCache.at && (Date.now() - dashCache.at) < 45000 && el.dataset.filled === '1';
     if (cachedOk) {
       paintDash(el);
-      fillDashToday(dashCache.today);
-      refreshBadge(true);
+      fillDashToday();
       return;
     }
     el.innerHTML = '<div class="rk-loading">Memuat dashboard...</div>';
-    // Preferred path: one secured RPC replaces the former employee-summary/options, face-progress,
-    // approvals, directory and today's-attendance round trips. Old deployments fall back safely.
-    rpcOptional('hr_dashboard_summary', { p_date: null }).then(function (summary) {
-      if (summary && summary.ok && Array.isArray(summary.employeeDirectory)) {
-        dashCache.fp = summary.faceProgress || null;
-        dashCache.ap = summary.pendingApprovals || null;
-        dashCache.employeeList = summary.employeeDirectory.map(function (x) { return empNormalize(x); });
-        dashCache.today = summary.attendanceToday || null;
-        dashCache.at = Date.now();
-        paintDash(el);
-        fillDashToday(dashCache.today);
-        refreshBadge(true);
-        return;
-      }
-      return loadDashLegacy();
-    }).catch(function () { return loadDashLegacy(); });
-
-    function loadDashLegacy() {
-      return Promise.all([
-        ensureKar(false).catch(function () {}),
-        api('getFaceProgress', [], 20000).catch(function () { return null; }),
-        api('getPendingApprovalsFull', [], 20000).catch(function () { return null; }),
-        rpcOptional('hr_get_employee_directory', {}).catch(function () { return null; })
-      ]).then(function (rs) {
-        dashCache.fp = rs[1] || dashCache.fp || null;
-        dashCache.ap = rs[2] || dashCache.ap || null;
-        var dir = rs[3];
-        var dirRows = Array.isArray(dir) ? dir : (dir && (Array.isArray(dir.list) ? dir.list : (Array.isArray(dir.data) ? dir.data : null)));
-        if (dirRows) dashCache.employeeList = dirRows.map(function (x) { return empNormalize(x); });
-        dashCache.today = null;
-        dashCache.at = Date.now();
-        paintDash(el);
-        fillDashToday(null);
-        refreshBadge(true);
-      }).catch(function () {
-        dashCache.at = Date.now();
-        paintDash(el);
-        fillDashToday(null);
-        refreshBadge(true);
-      });
-    }
+    Promise.all([
+      ensureKar(false).catch(function () {}),
+      api('getFaceProgress', [], 20000).catch(function () { return null; }),
+      api('getPendingApprovalsFull', [], 20000).catch(function () { return null; }),
+      rpcOptional('hr_get_employee_directory', {}).catch(function () { return null; })
+    ]).then(function (rs) {
+      dashCache.fp = rs[1] || dashCache.fp || null;
+      dashCache.ap = rs[2] || dashCache.ap || null;
+      var dir = rs[3];
+      var dirRows = Array.isArray(dir) ? dir : (dir && (Array.isArray(dir.list) ? dir.list : (Array.isArray(dir.data) ? dir.data : null)));
+      if (dirRows) dashCache.employeeList = dirRows.map(function (x) { return empNormalize(x); });
+      dashCache.at = Date.now();
+      paintDash(el);
+      fillDashToday();
+      refreshBadge();
+    }).catch(function () {
+      // Keep a useful dashboard from the current employee cache if an optional source is offline.
+      dashCache.at = Date.now();
+      paintDash(el);
+      fillDashToday();
+      refreshBadge();
+    });
   }
 
   function setDashStat(id, value) {
@@ -10516,37 +10349,27 @@ function showHrPlaceholder(title, group, description) {
     return '—';
   }
 
-  function fillDashToday(summary) {
-    if (summary && summary.ok !== false && (summary.total != null || summary.hadir != null)) {
-      var total = Number(summary.total || 0);
-      var hadir = Number(summary.hadir || 0);
-      if (!isFinite(total) || !isFinite(hadir)) {
-        setDashStat('rkDashStatHadir', '—'); setDashStat('rkDashStatTidakHadir', '—');
-        return Promise.resolve(summary);
-      }
-      setDashStat('rkDashStatHadir', hadir);
-      setDashStat('rkDashStatTidakHadir', Math.max(total - hadir, 0));
-      return Promise.resolve(summary);
-    }
-    return rpcOptional('hr_attendance_today', { p_date: null }).then(function (r) {
+  function fillDashToday() {
+    rpcOptional('hr_attendance_today', { p_date: null }).then(function (r) {
       if (r && r.ok !== false && (r.total != null || Array.isArray(r.list))) {
         var total = Number(r.total != null ? r.total : (r.list || []).length);
-        var hadir = Number(r.hadir != null ? r.hadir : (r.list || []).filter(function (x) { return x.status === 'HADIR' || x.status === 'BELUM_PULANG' || x.status === 'BELUM CLOCK OUT'; }).length);
+        var hadir = Number(r.hadir != null ? r.hadir : (r.list || []).filter(function (x) { return x.status === 'HADIR' || x.status === 'BELUM_PULANG'; }).length);
         if (!isFinite(total) || !isFinite(hadir)) {
-          setDashStat('rkDashStatHadir', '—'); setDashStat('rkDashStatTidakHadir', '—');
-          return r;
+          setDashStat('rkDashStatHadir', '—');
+          setDashStat('rkDashStatTidakHadir', '—');
+          return;
         }
         setDashStat('rkDashStatHadir', hadir);
         setDashStat('rkDashStatTidakHadir', Math.max(total - hadir, 0));
       } else {
-        setDashStat('rkDashStatHadir', '—'); setDashStat('rkDashStatTidakHadir', '—');
+        setDashStat('rkDashStatHadir', '—');
+        setDashStat('rkDashStatTidakHadir', '—');
         if (window.__RH_OPTIONAL_RPC_LAST_ERROR) console.warn('[ReHolz] Ringkasan kehadiran belum tersedia:', window.__RH_OPTIONAL_RPC_LAST_ERROR);
       }
-      return r;
     }).catch(function (e) {
-      setDashStat('rkDashStatHadir', '—'); setDashStat('rkDashStatTidakHadir', '—');
+      setDashStat('rkDashStatHadir', '—');
+      setDashStat('rkDashStatTidakHadir', '—');
       console.warn('[ReHolz] Ringkasan kehadiran gagal dimuat:', e && e.message || e);
-      return null;
     });
   }
 
@@ -10987,34 +10810,17 @@ function showHrPlaceholder(title, group, description) {
     });
     var tip=document.getElementById('rkChartTooltip');
     if(!tip){tip=document.createElement('div');tip.id='rkChartTooltip';tip.className='rk-chart-tooltip';tip.setAttribute('role','tooltip');document.body.appendChild(tip);}
-    function hideTip(){
-      if(!tip)return;
-      tip.classList.remove('on');
-      tip.style.left='-10000px';
-      tip.style.top='-10000px';
-      tip.replaceChildren();
-    }
-    // Expose a tiny close hook so navigation can dismiss this body-level fixed element.
-    window.RHHideDashboardChartTooltip=hideTip;
     function showTip(el,ev){
-      if(!MQ.matches||!document.body.classList.contains('rh-desk-on')||cur!=='dash'||document.hidden||!el){hideTip();return;}
+      if(!MQ.matches||!document.body.classList.contains('rh-desk-on')||!el) return;
       var title=el.getAttribute('data-rk-tip-title')||'', value=el.getAttribute('data-rk-tip-value')||'0', detail=el.getAttribute('data-rk-tip-detail')||'';
       tip.innerHTML='<b>'+escH(title)+'</b><strong>'+escH(value)+'</strong>'+(detail?'<span>'+escH(detail)+'</span>':'');tip.classList.add('on');moveTip(ev);
     }
-    function moveTip(ev){
-      if(!tip.classList.contains('on'))return;
-      if(!MQ.matches||!document.body.classList.contains('rh-desk-on')||cur!=='dash'||document.hidden){hideTip();return;}
-      var x=Math.min((ev.clientX||0)+14,window.innerWidth-tip.offsetWidth-10),y=Math.min((ev.clientY||0)+14,window.innerHeight-tip.offsetHeight-10);
-      tip.style.left=Math.max(8,x)+'px';tip.style.top=Math.max(8,y)+'px';
-    }
+    function moveTip(ev){if(!tip.classList.contains('on'))return;var x=Math.min((ev.clientX||0)+14,window.innerWidth-tip.offsetWidth-10),y=Math.min((ev.clientY||0)+14,window.innerHeight-tip.offsetHeight-10);tip.style.left=Math.max(8,x)+'px';tip.style.top=Math.max(8,y)+'px';}
     document.addEventListener('pointerover',function(ev){var el=ev.target.closest&&ev.target.closest('[data-rk-chart-tip]');if(el)showTip(el,ev);});
     document.addEventListener('pointermove',function(ev){moveTip(ev);});
-    document.addEventListener('pointerout',function(ev){var el=ev.target.closest&&ev.target.closest('[data-rk-chart-tip]');if(el&&(!ev.relatedTarget||!el.contains(ev.relatedTarget)))hideTip();});
-    document.addEventListener('pointerdown',function(ev){if(!(ev.target.closest&&ev.target.closest('[data-rk-chart-tip]')))hideTip();},true);
+    document.addEventListener('pointerout',function(ev){var el=ev.target.closest&&ev.target.closest('[data-rk-chart-tip]');if(el&&(!ev.relatedTarget||!el.contains(ev.relatedTarget)))tip.classList.remove('on');});
     document.addEventListener('focusin',function(ev){var el=ev.target.closest&&ev.target.closest('[data-rk-chart-tip]');if(el)showTip(el,{clientX:Math.min(600,window.innerWidth/2),clientY:180});});
-    document.addEventListener('focusout',function(ev){if(ev.target.closest&&ev.target.closest('[data-rk-chart-tip]'))hideTip();});
-    document.addEventListener('visibilitychange',function(){if(document.hidden)hideTip();});
-    window.addEventListener('blur',hideTip);
+    document.addEventListener('focusout',function(ev){if(ev.target.closest&&ev.target.closest('[data-rk-chart-tip]'))tip.classList.remove('on');});
   }
 
   function paintDash(el) {
@@ -11061,8 +10867,9 @@ function showHrPlaceholder(title, group, description) {
     }
     return new Promise(function (resolve) {
       try {
+        var c = window.supabase && window.__rhSbClient;
         var use = null;
-        if (typeof getBackendClient === 'function') { use = getBackendClient(); } else { return resolve(null); }
+        if (typeof getSb === 'function') { use = getSb(); } else { return resolve(null); }
         Promise.resolve(use).then(function (client) {
           if (!client) return resolve(null);
           var p = params || {};
@@ -11753,7 +11560,7 @@ function showHrPlaceholder(title, group, description) {
       empCloseModal('rkEmpEditShade'); rkToast((r&&r.message)||'Employee profile updated.');
       return syncEmpDirectory(true);
     }).catch(function(e){
-      if(msg) msg.textContent=(e&&e.message)||'Unable to save employee profile. Check the native Apps Script backend and try again.';
+      if(msg) msg.textContent=(e&&e.message)||'Unable to save employee profile. Apply the Supabase migration and try again.';
       if(saveBtn){saveBtn.disabled=false;saveBtn.textContent='Save Changes';}
     });
   }
@@ -11929,13 +11736,13 @@ function showHrPlaceholder(title, group, description) {
     // Use the exact v10 RPC and surface the server error. The old fallback list
     // could silently hide a missing function, permission issue, or schema-cache mismatch.
     function requestAttendanceMonitoring() {
-      if (typeof window.getBackendClient !== 'function') {
-        return Promise.reject(new Error('Apps Script backend bridge is unavailable. Open the latest deployed Web App.'));
+      if (typeof window.getSb !== 'function') {
+        return Promise.reject(new Error('Supabase client bridge is unavailable. Reload the latest HTML and service worker.'));
       }
       var token = typeof window.getToken === 'function' ? String(window.getToken() || '') : '';
       if (!token) return Promise.reject(new Error('Session token is missing. Please log out and log in again.'));
-      return Promise.resolve(window.getBackendClient()).then(function(client) {
-        if (!client || typeof client.rpc !== 'function') throw new Error('Apps Script backend could not be initialized.');
+      return Promise.resolve(window.getSb()).then(function(client) {
+        if (!client || typeof client.rpc !== 'function') throw new Error('Supabase client could not be initialized.');
         return client.rpc('hr_get_attendance_monitoring', {
           p_token: token,
           p_start_date: from,
@@ -11948,7 +11755,7 @@ function showHrPlaceholder(title, group, description) {
           var detail = e.message || 'Unknown RPC error';
           if (e.code) detail += ' [' + e.code + ']';
           if (/PGRST202|could not find the function|function .* does not exist/i.test(detail)) {
-            detail += '. Fungsi backend belum tersedia atau belum masuk schema cache. Periksa handler hr_get_attendance_monitoring pada Code.gs.';
+            detail += '. Fungsi backend belum tersedia atau belum masuk schema cache. Periksa fungsi hr_get_attendance_monitoring di Supabase.';
           } else if (/Unauthorized|Access denied|42501/i.test(detail)) {
             detail += '. Pastikan sesi masih aktif dan role akun memiliki akses baca rekap absensi.';
           }
@@ -12697,13 +12504,13 @@ function showHrPlaceholder(title, group, description) {
     if(!isSuperAdminRole()){rkToast('Only Super Admin can change the calendar.');return;}
     var date=document.getElementById('rkCalOverrideDate').value,branch=document.getElementById('rkCalOverrideBranch').value,type=document.getElementById('rkCalOverrideType').value,label=document.getElementById('rkCalOverrideLabel').value,reason=document.getElementById('rkCalOverrideReason').value;
     if(!date||!reason.trim()){rkToast('Date and reason are required.');return;}
-    rpcOptional('hr_save_calendar_override',{p_calendar_date:date,p_scope_branch:branch,p_day_type:type,p_label:label,p_reason:reason}).then(function(r){if(r&&r.ok!==false){rkToast(r.message||'Calendar override saved.');loadWorkingCalendarV10();}else rkToast('Override was not saved. Check role permissions and the Apps Script backend.');});
+    rpcOptional('hr_save_calendar_override',{p_calendar_date:date,p_scope_branch:branch,p_day_type:type,p_label:label,p_reason:reason}).then(function(r){if(r&&r.ok!==false){rkToast(r.message||'Calendar override saved.');loadWorkingCalendarV10();}else rkToast('Override was not saved. Check role and SQL migration.');});
   }
   function importPublicHolidaysV10(){
     if(!isSuperAdminRole()){rkToast('Only Super Admin can import national holidays.');return;}
     var year=Number((document.getElementById('rkCalFrom')||{}).value.slice(0,4));if(!year){rkToast('Choose a date range in the year to import.');return;}
     var btn=document.getElementById('rkCalImport');if(btn){btn.disabled=true;btn.textContent='Importing…';}
-    fetch('https://indonesian-holidays.ahrulsyamil.com/holidays/'+year,{method:'GET',headers:{'Accept':'application/json'}}).then(function(resp){if(!resp.ok)throw new Error('Holiday API returned HTTP '+resp.status);return resp.json();}).then(function(payload){var raw=Array.isArray(payload)?payload:(payload.data||payload.holidays||[]);var rows=raw.map(function(x){return {date:x.date,name:x.name||x.title||'Holiday',type:x.type,description:x.description||x.name||''};}).filter(function(x){return x.date&&/^(national_holiday|joint_leave)$/i.test(x.type||'');});if(!rows.length)throw new Error('No supported holiday rows were returned.');return rpcOptional('hr_import_public_holidays',{p_year:year,p_rows:rows});}).then(function(r){if(r&&r.ok!==false){rkToast('Public holiday calendar imported: '+(r.processed||0)+' rows.');loadWorkingCalendarV10();}else rkToast('Import did not complete. Verify the Apps Script backend and role permissions.');}).catch(function(e){rkToast('Holiday import failed: '+(e&&e.message||e));}).then(function(){if(btn){btn.disabled=!isSuperAdminRole();btn.textContent='Import Public Holidays';}});
+    fetch('https://indonesian-holidays.ahrulsyamil.com/holidays/'+year,{method:'GET',headers:{'Accept':'application/json'}}).then(function(resp){if(!resp.ok)throw new Error('Holiday API returned HTTP '+resp.status);return resp.json();}).then(function(payload){var raw=Array.isArray(payload)?payload:(payload.data||payload.holidays||[]);var rows=raw.map(function(x){return {date:x.date,name:x.name||x.title||'Holiday',type:x.type,description:x.description||x.name||''};}).filter(function(x){return x.date&&/^(national_holiday|joint_leave)$/i.test(x.type||'');});if(!rows.length)throw new Error('No supported holiday rows were returned.');return rpcOptional('hr_import_public_holidays',{p_year:year,p_rows:rows});}).then(function(r){if(r&&r.ok!==false){rkToast('Public holiday calendar imported: '+(r.processed||0)+' rows.');loadWorkingCalendarV10();}else rkToast('Import did not complete. Verify SQL migration and role permissions.');}).catch(function(e){rkToast('Holiday import failed: '+(e&&e.message||e));}).then(function(){if(btn){btn.disabled=!isSuperAdminRole();btn.textContent='Import Public Holidays';}});
   }
 
   /* ==========================================================================
@@ -12713,7 +12520,7 @@ function showHrPlaceholder(title, group, description) {
      halaman menampilkan catatan panduan, bukan error.
      ========================================================================== */
   function optNote(fnName) {
-    return '<div class="rk-note">Endpoint <b>' + fnName + '</b> is not available in the backend. Configure it according to <i>Apps Script Backend Setup Instructions</i> to enable this section.</div>';
+    return '<div class="rk-note">Endpoint <b>' + fnName + '</b> is not available in the backend. Configure it according to <i>Supabase Backend Setup Instructions</i> to enable this section.</div>';
   }
   function normArr(r) {
     if (!r) return null;
